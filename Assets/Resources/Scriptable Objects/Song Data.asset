@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76e5f86296d14ed3a0f537c46f95eff, type: 3}
+  m_Name: Song Data
+  m_EditorClassIdentifier: 
+  SongPath: Audio/Music/
+  CoverPath: None
+  ListSong:
+  - Title: 006
+    Artist: Unknown
+    Cover: None
+  - Title: 011
+    Artist: Unknown
+    Cover: None
+  - Title: 033
+    Artist: Unknown
+    Cover: None
+  - Title: 042
+    Artist: Unknown
+    Cover: None
+  - Title: 043
+    Artist: Unknown
+    Cover: None
+  - Title: 044
+    Artist: Unknown
+    Cover: None
+  - Title: 061
+    Artist: Unknown
+    Cover: None
+  - Title: 065
+    Artist: Unknown
+    Cover: None
+  - Title: 116
+    Artist: Unknown
+    Cover: None
+  - Title: 122
+    Artist: Unknown
+    Cover: None
+  - Title: 130
+    Artist: Unknown
+    Cover: None
+  - Title: 134
+    Artist: Unknown
+    Cover: None
+  - Title: 150
+    Artist: Unknown
+    Cover: None
+  - Title: 175
+    Artist: Unknown
+    Cover: None
+  - Title: 179
+    Artist: Unknown
+    Cover: None
+  - Title: 183
+    Artist: Unknown
+    Cover: None
+  - Title: 227
+    Artist: Unknown
+    Cover: None
+  - Title: 231
+    Artist: Unknown
+    Cover: None
+  - Title: 249
+    Artist: Unknown
+    Cover: None
+  - Title: 250
+    Artist: Unknown
+    Cover: None

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI Prefabs
+  m_EditorClassIdentifier: 
+  m_GroupName: UI Prefabs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 62b9d10ad188a4999ad2015ee54af80e
+  m_SerializeEntries:
+  - m_GUID: 382a9f7edd1b04a1f8008b9302daca1c
+    m_Address: Assets/Prefabs/UI/Avatar.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 528beef11ad654b0e9c1bc2aa6de08fc
+    m_Address: Assets/Prefabs/UI/Shop Item.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0a8e79f2f710243ff8609a24c7db7871
+    m_Address: Assets/Prefabs/UI/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 32bbdfdbe5248461c9e01bc76632278d
+    m_Address: Assets/Prefabs/UI/Song.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4225bd8077ca44736b716639d61428e7
+    m_Address: Assets/Prefabs/UI/Inventory Item.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fce28cfcd39bf4a3e9467b4a8f691ce9
+    m_Address: Assets/Prefabs/UI/Character Button.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 41cff34dae9e44e55a41caa5e81abf05, type: 2}
+    - {fileID: 11400000, guid: 2085a50fa68834dcfb9e00f0f9647a67, type: 2}

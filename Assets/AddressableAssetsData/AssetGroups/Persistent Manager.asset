@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Persistent Manager
+  m_EditorClassIdentifier: 
+  m_GroupName: Persistent Manager
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6fdba25cd926a499c91bbe2458ef2ea0
+  m_SerializeEntries:
+  - m_GUID: a211565614f99464e9568d0902c5bdf2
+    m_Address: Assets/Prefabs/Managers/Scene Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a78c9bca4e714600b70af30b6afb1e9
+    m_Address: Assets/Prefabs/Managers/PlayFab Player Data Controller.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6bdfe4ed3cec40a383bc65525701a36
+    m_Address: Assets/Prefabs/Managers/PlayFab Game Play Data Controller.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 09ed08b20930441bf84ab4e7e534efd2
+    m_Address: Assets/Prefabs/Managers/PlayFab Flags.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5862845e5ae19467f8ef44ee5c8c517d
+    m_Address: Assets/Prefabs/Managers/PlayFab Authentication Controller.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03440fb7cb7b84193844ed42600b76ac
+    m_Address: Assets/Prefabs/Managers/Character Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 569a00d9b873c4d89b8fb1bf8ee2336e
+    m_Address: Assets/Prefabs/Managers/Audio Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d7e8fea54631b436da5c8dbb87f29cce
+    m_Address: Assets/Prefabs/Managers/PlayFab Game Data Controller.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f903adc6e63e4d39a7f25083ccd8f99
+    m_Address: Assets/Prefabs/Managers/PlayFab Error Handler.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83a1b123279d646f2bb419d53f3b543b
+    m_Address: Assets/Prefabs/Managers/Resource Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd0b0572282c1435483ff99b35799538
+    m_Address: Assets/Prefabs/Managers/Setting Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: bdbdd7467a6f547f6bf2a7aadbb143d9, type: 2}
+    - {fileID: 11400000, guid: 8ae325cc45b714ae5b8ed7e8619a1530, type: 2}

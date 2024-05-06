@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Animation
+  m_EditorClassIdentifier: 
+  m_GroupName: Animation
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 08813ec7b9b9247538e4eb18bf686e0c
+  m_SerializeEntries:
+  - m_GUID: 0aaf7c86bab1d4df7b8cec0d5c93f51a
+    m_Address: Assets/Animations/Controllers/SMPL.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30fb8afe838b94db3a8e2ca2446bca18
+    m_Address: Assets/Animations/Dances/006.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c2debbe0ac9484b72aaf49e18b097046
+    m_Address: Assets/Animations/Dances/011.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee36f7dd1ec0944879d90c4de1d456e8
+    m_Address: Assets/Animations/Dances/033.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3e7eeaef5d07b417d9774b24a6aa37d0
+    m_Address: Assets/Animations/Dances/042.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a05663c596cba48dd8a51b3bed0af633
+    m_Address: Assets/Animations/Dances/043.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc0b1958e37c7433087349fcb795f3f4
+    m_Address: Assets/Animations/Dances/044.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e58d32d9eacc14d6fb0836e4c71927ca
+    m_Address: Assets/Animations/Dances/061.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cdf36a625e795412889fb5a29810c921
+    m_Address: Assets/Animations/Dances/065.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fdb5cbd9ba8404a91bbb2d18fe49fb16
+    m_Address: Assets/Animations/Dances/116.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c27f6a1779c543cc8768d91889cb232
+    m_Address: Assets/Animations/Dances/122.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: acefbfc4d5f1c469fb057fe4b57e3c82
+    m_Address: Assets/Animations/Dances/130.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0a0805fda7e243d5b6d1245df21988e
+    m_Address: Assets/Animations/Dances/134.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e50d8ba3f73e94a5e8f975dd1ff5a0ac
+    m_Address: Assets/Animations/Dances/150.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b8a0dde3a8ca4563b2b92c4bf5b5a75
+    m_Address: Assets/Animations/Dances/175.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6cd7b6844a2564d8ea2db8ec2c40d137
+    m_Address: Assets/Animations/Dances/179.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd1ee11e7e9d84f499b632d883b846c2
+    m_Address: Assets/Animations/Dances/183.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee44b11eee06e46a980eec3dc6f2b67d
+    m_Address: Assets/Animations/Dances/227.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a4be5608fbfb44ed7a51c10aeef999d4
+    m_Address: Assets/Animations/Dances/231.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ddb2cdef5a65c43f28c4ca9e64700532
+    m_Address: Assets/Animations/Dances/249.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a9f05be7a2eb04993be6d4bc821841cd
+    m_Address: Assets/Animations/Dances/250.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae6e28dfc2b4f4dd5b4c2ab1c0862097
+    m_Address: Assets/Animations/Dances/Breakdance1.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 003485fa1568a4855bfc7e521dcbd67b
+    m_Address: Assets/Animations/Dances/Breakdance2.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cd7267f161cc4437f8ffe3af882b5fc1
+    m_Address: Assets/Animations/Dances/Idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8607c9716ae7c456eae6565611d256b1
+    m_Address: Assets/Animations/Dances/Moonwalk.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a416d14734b7a4c859fcd682d802a738
+    m_Address: Assets/Animations/Dances/Running Man.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 082e8e573b7da4e43aed8eb6199cb712, type: 2}
+    - {fileID: 11400000, guid: 41fb7f2fba0f14769930d8f3c709bd16, type: 2}

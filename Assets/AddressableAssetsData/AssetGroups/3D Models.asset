@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: 3D Models
+  m_EditorClassIdentifier: 
+  m_GroupName: 3D Models
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6b373bee569fa4f219ddb3b4d798100c
+  m_SerializeEntries:
+  - m_GUID: dd665e47793e143c295c85674202e10f
+    m_Address: Models/Women/Adventurer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d0c51e710b7f464db244c26be641ac2
+    m_Address: Models/Women/Casual
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15b2ad201815a4d6db1366f1f93e7ab1
+    m_Address: Models/Women/Formal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0c26a45f5f9fd40869846f04a1fbd656
+    m_Address: Models/Women/Medieval
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a508926bc92740f7a08efc8b78bd477
+    m_Address: Models/Women/Punk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 631008246c27e4c05aa61dd937a36894
+    m_Address: Models/Women/SciFi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7bbc9009135d54f5fa3b262922461094
+    m_Address: Models/Women/Soldier
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 41000d261b3db493186fbe587f290f2a
+    m_Address: Models/Women/Suit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ddd3a8f18efa40c7b1eab161ffedf08
+    m_Address: Models/Women/Witch
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec09f0726b92349f4ab28d78525fee1f
+    m_Address: Models/Women/Worker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ffaec0e3252e84eafb5e3adc794f5afb
+    m_Address: Models/Men/Adventurer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 85f4338d6f09643e9b6af4934b46999c
+    m_Address: Models/Men/Beach
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 26a28555f82154b57963df69c4c1464b
+    m_Address: Models/Men/Casual
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6986b9d9aadc54637b3f7f436516c514
+    m_Address: Models/Men/Casual2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7e25d63b48684b378231137392a80a8
+    m_Address: Models/Men/Farmer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9bec8ad23bee417c921edf95d86742a
+    m_Address: Models/Men/King
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b7187a9a150244a18ba1f3bb4bbcfd93
+    m_Address: Models/Men/Punk
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5bd2980a870b94faba85b6a4e8f88f88
+    m_Address: Models/Men/Spacesuit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb588cd147d5c456aa4cf583e1db00f9
+    m_Address: Models/Men/Suit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f178d916e40748269d3b4f46463f8bd
+    m_Address: Models/Men/Swat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: afd2409541fe64518a9d01eea378e6c4
+    m_Address: Models/Men/Worker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad08681bae0df44f7bcf461603639fed
+    m_Address: Models/SMPL/SMPL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 810f58c60f8044ea9b180459c5e904f0
+    m_Address: Assets/Prefabs/Models/stage.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e8049556f82c74fa5b1d8f153b294cfe, type: 2}
+    - {fileID: 11400000, guid: ee6c6eb8cc21a4c28ac3ec331dd10e88, type: 2}

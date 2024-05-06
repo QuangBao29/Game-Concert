@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d79cc47d12f465691c686688af4792, type: 3}
+  m_Name: Character Data
+  m_EditorClassIdentifier: 
+  ModelPath: Models/
+  ListCharacter:
+  - Path: SMPL/
+    ModelName: SMPL
+    Image: 
+  - Path: Women/
+    ModelName: Worker
+    Image: 
+  - Path: Women/
+    ModelName: Witch
+    Image: 
+  - Path: Women/
+    ModelName: Suit
+    Image: 
+  - Path: Women/
+    ModelName: Soldier
+    Image: 
+  - Path: Women/
+    ModelName: SciFi
+    Image: 
+  - Path: Women/
+    ModelName: Punk
+    Image: 
+  - Path: Women/
+    ModelName: Medieval
+    Image: 
+  - Path: Women/
+    ModelName: Formal
+    Image: 
+  - Path: Women/
+    ModelName: Casual
+    Image: 
+  - Path: Women/
+    ModelName: Adventurer
+    Image: 
+  - Path: Men/
+    ModelName: Worker
+    Image: 
+  - Path: Men/
+    ModelName: Swat
+    Image: 
+  - Path: Men/
+    ModelName: Suit
+    Image: 
+  - Path: Men/
+    ModelName: Spacesuit
+    Image: 
+  - Path: Men/
+    ModelName: Punk
+    Image: 
+  - Path: Men/
+    ModelName: King
+    Image: 
+  - Path: Men/
+    ModelName: Farmer
+    Image: 
+  - Path: Men/
+    ModelName: Casual
+    Image: 
+  - Path: Men/
+    ModelName: Casual2
+    Image: 
+  - Path: Men/
+    ModelName: Beach
+    Image: 
+  - Path: Men/
+    ModelName: Adventurer
+    Image: 

@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Events
+  m_EditorClassIdentifier: 
+  m_GroupName: Events
+  m_Data:
+    m_SerializedData: []
+  m_GUID: fc8945c6cc07b4695bdff97ab32d93cd
+  m_SerializeEntries:
+  - m_GUID: e980c7de8228743869fa4a8d95634c7c
+    m_Address: Assets/Scripts/Game/Game Events/Authentication/AutoLogin.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 4f9f128ee3de146cfbf709ffa6a4cb0d
+    m_Address: Assets/Scripts/Game/Game Events/Authentication/OnLoginClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: d794bb3627cf34ac88fc7e7092e97029
+    m_Address: Assets/Scripts/Game/Game Events/Authentication/OnLogoutClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 9394f4951e16144899932410926fd2f5
+    m_Address: Assets/Scripts/Game/Game Events/Authentication/OnRegisterClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: edaa0198a3883444186a4ff869d8c624
+    m_Address: Assets/Scripts/Game/Game Events/Authentication/OnResetPassword.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 0d50924aa9c7c4ab89ef840fceb52b3c
+    m_Address: Assets/Scripts/Game/Game Events/Audio/PlaySoundOnClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: a6d984e9ad48f41708f67135af4c0768
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnBuyClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: f3f1300987bf34193b96ff24a7c1aba9
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnExit.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: efeadf42940c84e45adcddaf8b2f86ec
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnNewGameClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: a9103b66fe4c74870907de86a254d925
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnNoteHit.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 0081127ff9d734589a220db7be3f4f02
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnNoteMiss.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: c797a209ad3084515a16e1a99490e54a
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnPauseClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 2f5c02fdf502944bf8bd1e537aad8a85
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnPlayClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: bcd1ea6e0fc1e45009d12e3e38363ffa
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnPurchaseItemSuccess.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: d5e4e2f4aa86b498390598bb07a01ca4
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnResumeClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 4478b3c697b8640cb9bd671974007c87
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnRetryClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 77d768fb7c8364460a9a65886b2a3b7c
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnSongClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 3a99fdd66ed1f44a789c0873bb89cbae
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnSongEnd.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: c0e7739896a8646078e6f4206bf3e3b7
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnUseItem.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 7d8fd5d17c81e49b2b9dd003f8c9e0c6
+    m_Address: Assets/Scripts/Game/Game Events/Inventory/OnEquipClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: dd3af1d111ab04106b4c9c89e35b78fc
+    m_Address: Assets/Scripts/Game/Game Events/Inventory/OnUnEquipClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: cf2420bea4ccb4d87a36c0c650bb7753
+    m_Address: Assets/Scripts/Game/Game Events/Playbfab/OnGameDataUpdated.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: c10fc85b32a9a4675b81c708d9fc9ff2
+    m_Address: Assets/Scripts/Game/Game Events/Settings/OnVolumeChange.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 4a63710680eb54496affebe37edb073a
+    m_Address: Assets/Scripts/Game/Game Events/Settings/OnVolumeUpdated.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: fd45db1d2def940d8b6dbe945e65b118
+    m_Address: Assets/Scripts/Game/Game Events/Playbfab/OnPlayerTitleDataRetrieved.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 7ee30d12420a34cdc9f02c2d07bba99c
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnCharacterClick.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  - m_GUID: 0d3729b4f373a45e490c3923a028c2dd
+    m_Address: Assets/Scripts/Game/Game Events/Gameplay/OnSongStart.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a7e25f8722d2a4e0288ce64aa3048097, type: 2}
+    - {fileID: 11400000, guid: 89b5f6b20bd824479b21e0ee0ae39717, type: 2}

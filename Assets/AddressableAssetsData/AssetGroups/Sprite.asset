@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sprite
+  m_EditorClassIdentifier: 
+  m_GroupName: Sprite
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ecb4d255cfa9c42c2bc7a50dcc3cf349
+  m_SerializeEntries:
+  - m_GUID: 699e7d51a0a104e39afe264f133d9566
+    m_Address: Assets/Art/Sprite/Button/Login.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5349d7c8f4aa94ecead1c3c778397f1a
+    m_Address: Assets/Art/Sprite/Icon/Facebook.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1c8f07913475c4678be620fcb44e0b16
+    m_Address: Assets/Art/Sprite/Icon/GM.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af23dd1396b77414988eb73764f608d4
+    m_Address: Assets/Art/Sprite/Icon/Google.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 914efa29651c5413eae9239ff6885012
+    m_Address: Assets/Art/Sprite/Icon/CN.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 83a4b498f1726423a8e8bc500e0122de
+    m_Address: Assets/Art/Sprite/Icon/Avatar Default.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d25ed84a440f841baaf7939e3a0af21d
+    m_Address: Assets/Art/Sprite/Icon/Booster.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 618ef2590ef104ef39d2018ff456859c
+    m_Address: Assets/Art/Sprite/Icon/Bronze Ticket.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 449f0c8095f4e4c218369632460521af
+    m_Address: Assets/Art/Sprite/Icon/Diamond Ticket.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d8982057fe2eb474797e2f0008c5f452
+    m_Address: Assets/Art/Sprite/Icon/Golden Ticket.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c937cb6ae13f4b9f9e833d5f7ff5ce4
+    m_Address: Assets/Art/Sprite/Icon/Icon Background.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 94616a21dfa5b5948816997cfc69b56d
+    m_Address: Assets/Art/Sprite/Icon/Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 138de1a4409ba4e229bf80d5df20ff11
+    m_Address: Assets/Art/Sprite/Icon/Music.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1a836657bb3714f2380db1dd425dbb9b
+    m_Address: Assets/Art/Sprite/Icon/Shield Combo.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9a740910e922146868f31624c744ca54
+    m_Address: Assets/Art/Sprite/Icon/Shield Multiplier.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c5e0d22cba09415a93bb3efc50804a3
+    m_Address: Assets/Art/Sprite/Icon/Silver Ticket.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d666b83b0ea924b54942c54422aaf4b5
+    m_Address: Assets/Art/Sprite/Icon/Sound.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a71f9e945fd5442e08e0c028b0698039, type: 2}
+    - {fileID: 11400000, guid: 19a13643c421649c2b63a7fac593e52f, type: 2}
