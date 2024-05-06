@@ -61,6 +61,10 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Managers/Setting Manager.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2aac2bc1f477c47a78d07b2dc84cea6c
+    m_Address: Assets/Prefabs/Managers/Game Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
   m_SchemaSet:

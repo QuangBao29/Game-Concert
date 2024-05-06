@@ -19,18 +19,14 @@ public class GameManager : SingletonMono<GameManager>
 
     private void Start()
     {
-        InitGame();
-    }
-
-    public void InitGame()
-    {
         Invoke(nameof(StartGame), 3.0f);
     }
 
+
     public void StartGame()
     {
-        SongManager.Instance.ReadFromFile(_levelData.SongIndex);
         onSongStart.Invoke(this, null);
+        SongManager.Instance.ReadFromFile(_levelData.SongIndex);
     }
 
     private void Update()

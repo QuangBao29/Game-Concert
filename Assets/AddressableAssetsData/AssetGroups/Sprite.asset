@@ -85,6 +85,22 @@ MonoBehaviour:
     m_Address: Assets/Art/Sprite/Icon/Sound.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ec2cf19fd0d57447699dde1b111a7a1f
+    m_Address: Assets/Art/Sprite/Background/Background.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c2a9a5df19bbf0446b97faee7d63dcf5
+    m_Address: Assets/Art/Sprite/Button/buttonBlue.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c9e69d4d89f328641be1bfb2effc36d3
+    m_Address: Assets/Art/Sprite/Button/buttonGreen.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a928dc48e2e04a9985a4499bc5f4036
+    m_Address: Assets/Art/Sprite/Song Cover/1.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
   m_SchemaSet:

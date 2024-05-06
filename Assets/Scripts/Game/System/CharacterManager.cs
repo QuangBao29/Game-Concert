@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using EventData;
-using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -11,7 +10,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     private Animator _animator;
     private AnimationClip _dance;
-    private AnimatorController _characterAnimator;
+    private RuntimeAnimatorController _characterAnimator;
 
     private string _currentCharacterPath;
     private readonly Vector3 _characterPosition = new(0.15f, 2.5f, 0f);
@@ -37,8 +36,9 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
         _character = Instantiate(_characterPrefab);
         _character.transform.position = _characterPosition;
-
+        
         _animator = _character.GetComponent<Animator>();
+        Debug.Log(_animator.name);
         _animator.runtimeAnimatorController = _characterAnimator;
     }
 
@@ -55,6 +55,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
         _character.transform.position = _characterPosition;
 
         _animator = _character.GetComponent<Animator>();
+        Debug.Log(_animator.name);
         _animator.runtimeAnimatorController = _characterAnimator;
     }
 

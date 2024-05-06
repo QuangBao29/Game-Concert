@@ -10,13 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Game Data
+  m_Name: Gameplay Prefab
   m_EditorClassIdentifier: 
-  m_GroupName: Game Data
+  m_GroupName: Gameplay Prefab
   m_Data:
     m_SerializedData: []
   m_GUID: dcf3ff44dc7d548ffb5165c6fff750b7
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: c725f06bdde0147f1bf23177f0b66332
+    m_Address: Assets/Prefabs/Gameplay/Activator.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 18f3b2d39355c4097b7e5591edf51bff
+    m_Address: Assets/Prefabs/Gameplay/NotePrefab1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a2b4e09832bb54e9c809407684bcd7f9
+    m_Address: Assets/Prefabs/Gameplay/NotePrefab2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 652ad48fc24f74328b6f452e8ce35bc7
+    m_Address: Assets/Prefabs/Gameplay/NotePrefab3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
   m_SchemaSet:
