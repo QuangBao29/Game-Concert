@@ -51,11 +51,6 @@ public class SongManager : SingletonMono<SongManager>
         //ReadFromFile();
     }
 
-    private void ReadFromWeb()
-    {
-        Debug.LogError("Read From Web is being developped!");
-    }
-
     public void ReadFromFile(int songIndex)
     {
         string midiFileName = _songName + Define.MidiFileExtension;

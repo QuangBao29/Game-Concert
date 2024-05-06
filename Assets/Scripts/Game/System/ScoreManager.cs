@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreManager : PersistentManager<ScoreManager>
 {
     [SerializeField]
-    private TextMeshProUGUI _scoreText = null;
+    private TextMeshProUGUI scoreText = null;
     [SerializeField]
     private TextMeshProUGUI _comboText = null;
 
@@ -26,16 +26,8 @@ public class ScoreManager : PersistentManager<ScoreManager>
         _comboScore -= 1;
         //AudioManager.Instance.PlayMissSFX();
     }
-    public static void SetScore(int score)
+    public void SetScore(int score)
     {
-        _comboScore = score;
-    }
-    public static int GetScore()
-    {
-        return _comboScore;
-    }
-    private void Update()
-    {
-        //_scoreText.text = _comboScore.ToString();
+        scoreText.text = _comboScore.ToString();
     }
 }
