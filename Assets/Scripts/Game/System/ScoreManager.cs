@@ -7,11 +7,12 @@ using System;
 public class ScoreManager : SingletonMono<ScoreManager>
 {
     [SerializeField] private TextMeshProUGUI scoreText = null;
-    [SerializeField] private TextMeshProUGUI comboText = null;
+    [SerializeField] private TextMeshProUGUI comboCountText = null;
+    [SerializeField] private TextMeshProUGUI multiplierText = null;
 
-    private static int comboScore = 0;
-    private static int totalScore = 0;
-    private int comboCount = 0;
+    private float comboScore = 0;
+    private float totalScore = 0;
+    private int comboCount = 1;
 
     void Start()
     {
@@ -20,37 +21,54 @@ public class ScoreManager : SingletonMono<ScoreManager>
 
     public void OnNoteHit(Component sender, object data)
     {
-        int multiScore = GetMultiplier();
-
-        if (data is Tuple<HitType, bool> hitData)
+        if (data is HitType hitData)
         {
-            if (hitData.Item1 == HitType.Perfect)
+            if (hitData == HitType.Perfect)
             {
+                comboCount += 1;
+                int multiScore = GetMultiplier();
                 Debug.LogError("perfect hit");
-                int score = Define.PerfectScore * multiScore;
+                float score = Define.PerfectScore * multiScore;
+                //comboScore += score;
+                totalScore += score;
+                SetMultiplier(multiScore);
             }
+            else if (hitData == HitType.Miss)
+            {
+                comboCount = 1;
+                Debug.LogError("miss hit");
+                float score = Define.BaseScore;
+                //comboScore = score;
+                totalScore += score;
+                SetMultiplier(1);
+            }
+            scoreText.text = totalScore.ToString();
+            comboCountText.text = comboCount.ToString() + " HIT";
         }
     }
 
     private int GetMultiplier()
     {
-        return 0;
+        if (comboCount >= 1 && comboCount <= 5)
+        {
+            return 1;
+        }
+        else if (comboCount >= 6 && comboCount <= 10)
+        {
+            return 2;
+        }
+        else if (comboCount >= 11 && comboCount <= 20)
+        {
+            return 3;
+        }
+        else
+        {
+            return 5;
+        }
     }
 
-    public static void Hit()
+    public void SetMultiplier(int multiplier)
     {
-        comboScore += 1;
-        //AudioManager.Instance.PlayHitSFX();
-    }
-
-    public static void Miss()
-    {
-        comboScore -= 1;
-        //AudioManager.Instance.PlayMissSFX();
-    }
-
-    public void SetScore(int score)
-    {
-        scoreText.text = comboScore.ToString();
+        multiplierText.text = "x " + multiplier.ToString();
     }
 }

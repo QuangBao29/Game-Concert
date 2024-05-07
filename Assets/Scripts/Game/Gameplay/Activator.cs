@@ -10,7 +10,7 @@ using System.Linq;
 public class Activator : MonoBehaviour
 {
     public KeyCode KeyInput;
-    public GameEvent OnPerfectHit;
+    public GameEvent OnNoteHit;
     [SerializeField]
     private NoteManager noteManager = null;
     [SerializeField]
@@ -19,8 +19,6 @@ public class Activator : MonoBehaviour
     private GameObject startZone = null;
     [SerializeField]
     private GameObject hitZone = null;
-    //[SerializeField]
-    //private MeshRenderer _meshRenderer = null;
 
     private List<Double> noteTimeMidi = new(); //timestamp that note spawned (based on midi)
     private List<Note> notes = new();
@@ -30,10 +28,6 @@ public class Activator : MonoBehaviour
     private int zoneIndex = 0;
     private float cooldown = Define.HitObjectInterval;
     private float lastClickedTime = 0;
-
-    //private Vector3 originalHitPos = new Vector3(0, 0, 0);
-    private bool isClicked = false;
-
 
     /// <summary>
     /// from 0 to 1
@@ -88,17 +82,17 @@ public class Activator : MonoBehaviour
             double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.InputDelayInMilliseconds / 1000.0);
             if (Math.Abs(audioTime - timeStamp) < marginOfError)
             {
-                //co the invoke game event OnHitNote..
-                OnPerfectHit.Invoke(null, null);
                 Debug.LogError("Hit on note");
-                var temp = notes[0];
-                notes.RemoveAt(0);
-                temp.OnFinishNote();
+                OnNoteHit.Invoke(null, HitType.Perfect);
             }
             else
             {
                 Debug.LogError(String.Format("Hit inaccurate on note with {0} delay", Math.Abs(audioTime - timeStamp)));
+                OnNoteHit.Invoke(null, HitType.Miss);
             }
+            var temp = notes[0];
+            notes.RemoveAt(0);
+            temp.OnFinishNote();
         }
         //if (hitZone.transform.position != originalHitPos && isClicked)
         //{
@@ -139,8 +133,6 @@ public class Activator : MonoBehaviour
     private void OnClickHitButton()
     {
         lastClickedTime = Time.time;
-        //hitZone.transform.position = new Vector3(originalHitPos.x, originalHitPos.y - 0.4f, originalHitPos.z);
-        isClicked = true;
     }
 
     public void OnResponseNoteMiss(Component component, object data)
@@ -151,7 +143,6 @@ public class Activator : MonoBehaviour
             index = (int)data;
             var temp = notes[index];
             Destroy(temp.gameObject);
-            ScoreManager.Miss();
         }
         else
         {

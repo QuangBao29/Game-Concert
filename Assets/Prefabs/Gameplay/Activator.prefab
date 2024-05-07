@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyInput: 100
+  OnNoteHit: {fileID: 11400000, guid: a9103b66fe4c74870907de86a254d925, type: 2}
   noteManager: {fileID: 0}
   endZone: {fileID: 7384505564582727393}
   startZone: {fileID: 1689177657362015197}
