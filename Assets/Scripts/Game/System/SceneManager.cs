@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SceneManager : PersistentManager<SceneManager>
 {
-    public LevelData levelData;
+    public LevelData LevelData;
 
     public void LoadUIScene(Component sender, object data)
     {
@@ -13,7 +13,13 @@ public class SceneManager : PersistentManager<SceneManager>
 
     public void LoadPlayScene(Component sender, object data)
     {
-        levelData = (LevelData)data;
+        LevelData = (LevelData)data;
+        ResourceManager.Instance.UnloadScene();
+        ResourceManager.Instance.LoadScene(1);
+    }
+
+    public void ReLoadPlayScene(Component sender, object data)
+    {
         ResourceManager.Instance.UnloadScene();
         ResourceManager.Instance.LoadScene(1);
     }

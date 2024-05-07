@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : SingletonMono<GameManager>
 {
     public GameEvent onSongStart;
-    public GameEvent onPauseClick;
+    public GameEvent onEndGame;
 
     private LevelData _levelData;
     private GameState _gameState;
@@ -14,7 +14,7 @@ public class GameManager : SingletonMono<GameManager>
     public void Awake()
     {
         _gameState = GameState.UI;
-        _levelData = SceneManager.Instance.levelData;
+        _levelData = SceneManager.Instance.LevelData;
     }
 
     private void Start()
@@ -22,11 +22,30 @@ public class GameManager : SingletonMono<GameManager>
         Invoke(nameof(StartGame), 3.0f);
     }
 
-
     public void StartGame()
     {
         onSongStart.Invoke(this, null);
         SongManager.Instance.ReadFromFile(_levelData.SongIndex);
+        _gameState = GameState.Play;
+    }
+
+    public void EndGame()
+    {
+        onEndGame.Invoke(this, null);
+    }
+
+    public void PauseGame(Component sender, object data)
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame(Component sender, object data)
+    {
+        Time.timeScale = 1;
+    }
+
+    private void ProcessGameplay()
+    {
     }
 
     private void Update()
@@ -40,15 +59,6 @@ public class GameManager : SingletonMono<GameManager>
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
-        }
-    }
-
-    private void ProcessGameplay()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            onPauseClick.Invoke(this, null);
-            Time.timeScale = 0;
         }
     }
 }

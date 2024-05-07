@@ -10,6 +10,13 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
 {
     private const string PlayFabRememberMeId = "PlayfabRememberMeId";
     private const string PlayFabRememberMe = "PlayfabRememberMe";
+    public bool isLoggedIn;
+
+    public override void Awake()
+    {
+        base.Awake();
+        isLoggedIn = false;
+    }
 
     #region Login
 
@@ -37,6 +44,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
             CreateAccount = true
         }, result =>
         {
+            isLoggedIn = true;
             PlayFabGameDataController.Instance.GetAllData();
             PlayFabPlayerDataController.Instance.GetAllData();
             PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
@@ -58,6 +66,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, result =>
             {
+                isLoggedIn = true;
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
@@ -77,6 +86,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
         };
         PlayFabClientAPI.LoginWithPlayFab(request, result =>
             {
+                isLoggedIn = true;
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;

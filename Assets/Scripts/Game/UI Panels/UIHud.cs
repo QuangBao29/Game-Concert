@@ -93,6 +93,6 @@ public class UIHud : BaseUI
     protected override void OnHide()
     {
         base.OnHide();
-        ResourceManager.UnloadSpriteAsset(_equipSlotSprite);
+        // ResourceManager.UnloadSpriteAsset(_equipSlotSprite);
     }
 }

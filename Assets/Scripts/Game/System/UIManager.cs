@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System;
 using UI;
 
-public class UIManager : PersistentManager<UIManager>
+public class UIManager : SingletonMono<UIManager>
 {
     private Dictionary<UIIndex, BaseUI> _uiDictionary;
     [SerializeField] private List<BaseUI> listUI = new();
 
     public UIIndex currentUIIndex;
+    public bool isLoggedIn;
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
         _uiDictionary = new Dictionary<UIIndex, BaseUI>();
         Application.quitting += () =>
         {
@@ -57,7 +57,23 @@ public class UIManager : PersistentManager<UIManager>
         callback?.Invoke();
 
         var isUILoaded = UnityEngine.SceneManagement.SceneManager.GetSceneByName("Main UI").isLoaded;
-        ShowUI(isUILoaded ? UIIndex.UIAuthentication : UIIndex.UIHud);
+        if (isUILoaded)
+        {
+            isLoggedIn = PlayFabAuthenticationController.Instance.isLoggedIn;
+            if (isLoggedIn)
+            {
+                ShowUI(UIIndex.UIMainMenu);
+                ShowUI(UIIndex.UINavigationTab);
+            }
+            else
+            {
+                ShowUI(UIIndex.UIAuthentication);
+            }
+        }
+        else
+        {
+            ShowUI(UIIndex.UIHud);
+        }
     }
 
     public void ShowUI(UIIndex uiIndex, UIParam param = null, Action callback = null)

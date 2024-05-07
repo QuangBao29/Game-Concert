@@ -14,6 +14,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     private string _currentCharacterPath;
     private readonly Vector3 _characterPosition = new(0.15f, 2.5f, 0f);
+    private readonly Vector3 _characterRotation = new(0, 0, 0);
 
     private const string AnimationPath = "Assets/Animations/Dances/";
     private const string AnimatorPath = "Assets/Animations/Controllers/SMPL.controller";
@@ -36,9 +37,8 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
         _character = Instantiate(_characterPrefab);
         _character.transform.position = _characterPosition;
-        
+
         _animator = _character.GetComponent<Animator>();
-        Debug.Log(_animator.name);
         _animator.runtimeAnimatorController = _characterAnimator;
     }
 
@@ -46,6 +46,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
     {
         Destroy(_character);
         ResourceManager.UnloadPrefabAsset(_characterPrefab);
+        ResourceManager.UnloadAnimatorControllerAsset(_characterAnimator);
 
         var temp = (Dictionary<string, string>)data;
         _currentCharacterPath = temp["Character Path"];
@@ -55,7 +56,6 @@ public class CharacterManager : PersistentManager<CharacterManager>
         _character.transform.position = _characterPosition;
 
         _animator = _character.GetComponent<Animator>();
-        Debug.Log(_animator.name);
         _animator.runtimeAnimatorController = _characterAnimator;
     }
 
@@ -64,4 +64,12 @@ public class CharacterManager : PersistentManager<CharacterManager>
         var temp = (LevelData)data;
         _dance = ResourceManager.LoadAnimationClip(AnimationPath + temp.SongName + ".anim");
     }
+
+    public void Reset(Component sender, object data)
+    {
+        _character.transform.position = _characterPosition;
+        _character.transform.eulerAngles = _characterRotation;
+        _animator.Play("Idle");
+    }
+    
 }

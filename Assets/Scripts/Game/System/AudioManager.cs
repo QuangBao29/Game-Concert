@@ -1,3 +1,4 @@
+using System;
 using EventData;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class AudioManager : PersistentManager<AudioManager>
     private AudioData _audioData;
 
     public GameEvent onSongEnd;
-    
+
     private bool _isSongEndInvoke;
     private int _songIndex;
 
@@ -52,15 +53,28 @@ public class AudioManager : PersistentManager<AudioManager>
         }
     }
 
-    public void PauseSong()
+    public void PauseSong(Component sender, object data)
     {
         if (!musicChannel) return;
         musicChannel.Pause();
     }
-
-    public void RemoveSong()
+    
+    public void StopSong(Component sender, object data)
     {
         if (!musicChannel) return;
+        musicChannel.Stop();
+    }
+
+    public void UnPauseSong(Component sender, object data)
+    {
+        if (!musicChannel) return;
+        musicChannel.UnPause();
+    }
+
+    private void RemoveSong()
+    {
+        if (!musicChannel) return;
+        ResourceManager.UnloadAudioClipAsset(musicChannel.clip);
         musicChannel.clip = null;
     }
 
@@ -93,5 +107,12 @@ public class AudioManager : PersistentManager<AudioManager>
             onSongEnd.Invoke(this, null);
             _isSongEndInvoke = true;
         }
+    }
+
+    public void Reset(Component sender, object data)
+    {
+        RemoveSong();
+        _songIndex = -1;
+        _isSongEndInvoke = false;
     }
 }

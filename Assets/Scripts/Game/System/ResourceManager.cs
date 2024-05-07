@@ -35,6 +35,21 @@ public class ResourceManager : PersistentManager<ResourceManager>
         Addressables.ReleaseInstance(gameObject);
     }
 
+    public static void UnloadAnimationClipAsset(AnimationClip animationClip)
+    {
+        Addressables.Release(animationClip);
+    }
+    
+    public static void UnloadAudioClipAsset(AudioClip audioClip)
+    {
+        Addressables.Release(audioClip);
+    }
+
+    public static void UnloadAnimatorControllerAsset(RuntimeAnimatorController animator)
+    {
+        Addressables.Release(animator);
+    }
+
     public static void UnloadSpriteAsset(Sprite sprite)
     {
         Addressables.Release(sprite);
