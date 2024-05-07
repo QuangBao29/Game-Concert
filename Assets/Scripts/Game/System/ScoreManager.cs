@@ -27,9 +27,9 @@ public class ScoreManager : SingletonMono<ScoreManager>
         //AudioManager.Instance.PlayMissSFX();
     }
 
-    public static void SetScore(int score)
+    public void SetScore(int score)
     {
-        scoreText.text = _comboScore.ToString();
+        _scoreText.text = _comboScore.ToString();
     }
 
     public static int GetScore()
