@@ -132,8 +132,8 @@ namespace GameData
 public enum HitType
 {
     Perfect,
-    Good,
-    Normal,
+    //Good,
+    //Normal,
     Miss
 }
 
