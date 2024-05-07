@@ -53,6 +53,7 @@ public class UISongSelection : BaseUI
     {
         _songIndex = songIndex;
         PlaySoundOnClick();
+        playerRankTxt.SetText("UnRanked");
         onSongClick.Invoke(this, new LeaderBoardReqInfo
         {
             Name = _songData.ListSong[_songIndex].Title,

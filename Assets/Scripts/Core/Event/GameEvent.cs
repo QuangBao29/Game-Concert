@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ public class GameEvent : ScriptableObject
 
     public void Invoke(Component sender, object data)
     {
-        foreach (var listener in listeners)
+        foreach (var listener in listeners.ToList())
         {
             listener.OnEventInvoke(sender, data);
         }

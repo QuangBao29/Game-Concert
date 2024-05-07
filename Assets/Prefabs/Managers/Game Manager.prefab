@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5344480791809166761}
   - component: {fileID: 2316820694532861767}
   - component: {fileID: -4690145204481809923}
+  - component: {fileID: 9119876778645650600}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -47,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSongStart: {fileID: 11400000, guid: 0d3729b4f373a45e490c3923a028c2dd, type: 2}
-  onEndGame: {fileID: 0}
+  onEndGame: {fileID: 11400000, guid: e79e057eb908b4970a77830e6e0eda89, type: 2}
+  updateLeaderBoard: {fileID: 11400000, guid: 873960647469546159d46616343c6758, type: 2}
 --- !u!114 &2316820694532861767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +97,34 @@ MonoBehaviour:
       - m_Target: {fileID: 5344480791809166761}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ResumeGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9119876778645650600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344480791809166759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3a99fdd66ed1f44a789c0873bb89cbae, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5344480791809166761}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ProcessEndSong
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

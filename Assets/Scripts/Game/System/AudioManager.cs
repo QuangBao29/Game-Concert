@@ -47,6 +47,7 @@ public class AudioManager : PersistentManager<AudioManager>
     {
         if (_songIndex != -1)
         {
+            _isSongEndInvoke = false;
             var audioClip = ResourceManager.LoadAudioClip(_songData.SongPath + _songData.ListSong[_songIndex].Title);
             musicChannel.clip = audioClip;
             musicChannel.Play();
@@ -58,7 +59,7 @@ public class AudioManager : PersistentManager<AudioManager>
         if (!musicChannel) return;
         musicChannel.Pause();
     }
-    
+
     public void StopSong(Component sender, object data)
     {
         if (!musicChannel) return;
@@ -100,19 +101,20 @@ public class AudioManager : PersistentManager<AudioManager>
         soundFxChannel.clip = null;
     }
 
-    private void Update()
-    {
-        if (!musicChannel.isPlaying && !_isSongEndInvoke)
-        {
-            onSongEnd.Invoke(this, null);
-            _isSongEndInvoke = true;
-        }
-    }
 
     public void Reset(Component sender, object data)
     {
         RemoveSong();
         _songIndex = -1;
         _isSongEndInvoke = false;
+    }
+
+    private void Update()
+    {
+        if (!musicChannel.isPlaying && !_isSongEndInvoke && musicChannel.clip != null)
+        {
+            onSongEnd.Invoke(this, null);
+            _isSongEndInvoke = true;
+        }
     }
 }

@@ -41,7 +41,7 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 StartPosition = 0,
                 StatisticName = tmp.Name
             };
-            
+
             GetPlayerRank(tmp.Name, () =>
             {
                 PlayFabClientAPI.GetLeaderboard(req, result =>
@@ -52,7 +52,6 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                     PlayFabErrorHandler.HandleError
                 );
             });
-
         }
     }
 
@@ -74,20 +73,22 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
         );
     }
 
-    public static void SendLeaderBoard(string leaderBoardName, int score)
+    public void SendLeaderBoard(Component sender, object data)
     {
+        var temp = (UpdateLeaderBoardReqInfo)data;
         var req = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
             {
                 new()
                 {
-                    StatisticName = leaderBoardName,
-                    Value = score
+                    StatisticName = temp.Name,
+                    Value = temp.Score
                 }
             }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(req, null, PlayFabErrorHandler.HandleError);
+        PlayFabClientAPI.UpdatePlayerStatistics(req, _ => { GetPlayerRank(temp.Name, temp.SuccessCallback); },
+            PlayFabErrorHandler.HandleError);
     }
 
     public void GetAllData()

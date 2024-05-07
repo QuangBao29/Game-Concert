@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventData;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,28 +15,31 @@ public class UIVictory : BaseUI
     public TextMeshProUGUI score;
     public TextMeshProUGUI rank;
 
-    public TextMeshProUGUI songTitle;
-    public TextMeshProUGUI songArtist;
-    public Image songCover;
+    public TextMeshProUGUI coinAmount;
+    public TextMeshProUGUI gemAmount;
 
     public void OnRetryClick()
     {
         onRetryClick.Invoke(this, null);
     }
-    
+
     public void OnNewGameClick()
     {
         onNewGameClick.Invoke(this, null);
     }
 
-    public void UpdateSongData(Component sender, object data)
-    {
-        //
-    }
 
-    public void UpdateData(Component sender, object data)
+    protected override void OnShow(UIParam param = null)
     {
-        // score.SetText();
-        // rank.SetText();
+        base.OnShow(param);
+        if (param != null)
+        {
+            rank.SetText(PlayFabGameDataController.Instance.PlayerRank.ToString());
+
+            var temp = (EndLevelData)param.Data;
+            score.SetText(temp.Score.ToString());
+            coinAmount.SetText(temp.Coin.ToString());
+            gemAmount.SetText(temp.Gem.ToString());
+        }
     }
 }

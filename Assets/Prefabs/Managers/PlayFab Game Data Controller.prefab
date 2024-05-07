@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6780645012453485242}
   - component: {fileID: 6780645012453485235}
   - component: {fileID: -7527451757156972335}
+  - component: {fileID: 5461798802166326159}
   m_Layer: 0
   m_Name: PlayFab Game Data Controller
   m_TagString: Untagged
@@ -64,6 +65,34 @@ MonoBehaviour:
       - m_Target: {fileID: 6780645012453485235}
         m_TargetAssemblyTypeName: PlayFabGameDataController, Assembly-CSharp
         m_MethodName: GetLeaderBoard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5461798802166326159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780645012453485234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 873960647469546159d46616343c6758, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6780645012453485235}
+        m_TargetAssemblyTypeName: PlayFabGameDataController, Assembly-CSharp
+        m_MethodName: SendLeaderBoard
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

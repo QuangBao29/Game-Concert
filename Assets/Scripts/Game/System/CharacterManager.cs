@@ -65,11 +65,11 @@ public class CharacterManager : PersistentManager<CharacterManager>
         _dance = ResourceManager.LoadAnimationClip(AnimationPath + temp.SongName + ".anim");
     }
 
+
     public void Reset(Component sender, object data)
     {
         _character.transform.position = _characterPosition;
         _character.transform.eulerAngles = _characterRotation;
         _animator.Play("Idle");
     }
-    
 }

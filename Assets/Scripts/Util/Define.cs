@@ -99,7 +99,26 @@ namespace EventData
         public string SongName;
         public int SongIndex;
     }
-}
+
+    public struct NoteReward
+    {
+        public int Coin;
+        public int Gem;
+    }
+
+    public struct EndLevelData
+    {
+        public int Coin;
+        public int Gem;
+        public int Score;
+    }
+    
+    public struct UpdateLeaderBoardReqInfo
+    {
+        public string Name;
+        public int Score;
+        public Action SuccessCallback;
+    }}
 
 
 namespace GameData
@@ -126,22 +145,6 @@ namespace GameData
         public string ModelName;
         public string Image;
     }
-}
-
-
-public enum HitType
-{
-    Hit,
-    Good,
-    Perfect,
-    Miss
-}
-
-public enum SongState
-{
-    Play,
-    Pause,
-    End
 }
 
 

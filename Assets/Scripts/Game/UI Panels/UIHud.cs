@@ -1,3 +1,4 @@
+using EventData;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class UIHud : BaseUI
 
     public GameObject equipSlot;
     public GameEvent onPauseClick;
-    
+
     private ItemData _itemData;
     private Sprite _equipSlotSprite;
 
@@ -90,9 +91,12 @@ public class UIHud : BaseUI
         }
     }
 
-    protected override void OnHide()
+    public void EndGame(Component sender, object data)
     {
-        base.OnHide();
-        // ResourceManager.UnloadSpriteAsset(_equipSlotSprite);
+        UIManager.Instance.HideUI(this);
+        UIManager.Instance.ShowUI(UIIndex.UIVictory, new UIParam
+        {
+            Data = data
+        });
     }
 }
