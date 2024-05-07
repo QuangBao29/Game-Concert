@@ -10,7 +10,7 @@ using System.Linq;
 public class Activator : MonoBehaviour
 {
     public KeyCode KeyInput;
-
+    public GameEvent OnPerfectHit;
     [SerializeField]
     private NoteManager noteManager = null;
     [SerializeField]
@@ -22,7 +22,7 @@ public class Activator : MonoBehaviour
     //[SerializeField]
     //private MeshRenderer _meshRenderer = null;
 
-    private List<Double> spawnedTimes = new(); //timestamp that note spawned (based on midi)
+    private List<Double> noteTimeMidi = new(); //timestamp that note spawned (based on midi)
     private List<Note> notes = new();
     private List<NoteName> pitches = new();
     private int spawnIndex = 0;
@@ -36,7 +36,7 @@ public class Activator : MonoBehaviour
 
 
     /// <summary>
-    /// from 0 to 3
+    /// from 0 to 1
     /// </summary>
     public int ZoneIndex
     {
@@ -48,10 +48,10 @@ public class Activator : MonoBehaviour
         get => pitches;
         set => pitches = value;
     }
-    public List<Double> SpawnedTimes
+    public List<Double> NoteTimeMidi
     {
-        get => spawnedTimes;
-        set => spawnedTimes = value;
+        get => noteTimeMidi;
+        set => noteTimeMidi = value;
     }
     public GameObject StartZone
     {
@@ -67,10 +67,10 @@ public class Activator : MonoBehaviour
     }
     void Update()
     {
-        if (spawnIndex < spawnedTimes.Count)
+        if (spawnIndex < noteTimeMidi.Count)
         {
             //spawn note truoc 1 khoang thoi gian NoteTime
-            if (SongManager.GetAudioSourceTime() >= spawnedTimes[spawnIndex] - SongManager.Instance.NoteTime)
+            if (SongManager.GetAudioSourceTime() >= noteTimeMidi[spawnIndex] - SongManager.Instance.NoteTime)
             {
                 var note = noteManager.OnSpawnNotesToTarget(startZone.transform.position, endZone.transform.position, hitZone.transform.position);
                 notes.Add(note);
@@ -81,17 +81,33 @@ public class Activator : MonoBehaviour
         if (Input.GetKeyDown(KeyInput) && Time.time - lastClickedTime > cooldown)
         {
             OnClickHitButton();
-            //check note
-
+            //check notes[0] xem thoi gian khi button dc click co nam trong khoang thoi gian cho phep hay khong
+            var note = notes[0];
+            double timeStamp = noteTimeMidi[0];
+            double marginOfError = SongManager.Instance.MarginOfError;
+            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.InputDelayInMilliseconds / 1000.0);
+            if (Math.Abs(audioTime - timeStamp) < marginOfError)
+            {
+                //co the invoke game event OnHitNote..
+                OnPerfectHit.Invoke(null, null);
+                Debug.LogError("Hit on note");
+                var temp = notes[0];
+                notes.RemoveAt(0);
+                temp.OnFinishNote();
+            }
+            else
+            {
+                Debug.LogError(String.Format("Hit inaccurate on note with {0} delay", Math.Abs(audioTime - timeStamp)));
+            }
         }
         //if (hitZone.transform.position != originalHitPos && isClicked)
         //{
         //    Invoke("OnClickUpKeyInput", Define.HitObjectInterval);
         //}
 
-        //if (inputIndex < spawnedTimes.Count)
+        //if (inputIndex < noteTimeMidi.Count)
         //{
-        //    double timeStamp = spawnedTimes[inputIndex];
+        //    double timeStamp = noteTimeMidi[inputIndex];
         //    double marginOfError = SongManager.Instance.MarginOfError;
         //    double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.InputDelayInMilliseconds / 1000.0);
 

@@ -131,9 +131,9 @@ namespace GameData
 
 public enum HitType
 {
-    Hit,
-    Good,
     Perfect,
+    Good,
+    Normal,
     Miss
 }
 
@@ -157,9 +157,9 @@ public static class Define
     public static string MidiFileExtension = ".mid";
 
     public static int BaseScore = 5;
-    public static int NormalHit = 10;
-    public static int GoodHit = 20;
-    public static int PerfectHit = 100;
+    public static int NormalScore = 10;
+    public static int GoodScore = 20;
+    public static int PerfectScore = 100;
     public static float HitObjectInterval = 0.2f;
 
 

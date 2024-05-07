@@ -2,43 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ScoreManager : SingletonMono<ScoreManager>
 {
-    [SerializeField] private TextMeshProUGUI _scoreText = null;
-    [SerializeField] private TextMeshProUGUI _comboText = null;
+    [SerializeField] private TextMeshProUGUI scoreText = null;
+    [SerializeField] private TextMeshProUGUI comboText = null;
 
-    private static int _comboScore;
+    private static int comboScore = 0;
+    private static int totalScore = 0;
+    private int comboCount = 0;
 
     void Start()
     {
-        _comboScore = 0;
+        comboScore = 0;
+    }
+
+    public void OnNoteHit(Component sender, object data)
+    {
+        int multiScore = GetMultiplier();
+
+        if (data is Tuple<HitType, bool> hitData)
+        {
+            if (hitData.Item1 == HitType.Perfect)
+            {
+                Debug.LogError("perfect hit");
+                int score = Define.PerfectScore * multiScore;
+            }
+        }
+    }
+
+    private int GetMultiplier()
+    {
+        return 0;
     }
 
     public static void Hit()
     {
-        _comboScore += 1;
+        comboScore += 1;
         //AudioManager.Instance.PlayHitSFX();
     }
 
     public static void Miss()
     {
-        _comboScore -= 1;
+        comboScore -= 1;
         //AudioManager.Instance.PlayMissSFX();
     }
 
     public void SetScore(int score)
     {
-        _scoreText.text = _comboScore.ToString();
-    }
-
-    public static int GetScore()
-    {
-        return _comboScore;
-    }
-
-    private void Update()
-    {
-        //_scoreText.text = _comboScore.ToString();
+        scoreText.text = comboScore.ToString();
     }
 }

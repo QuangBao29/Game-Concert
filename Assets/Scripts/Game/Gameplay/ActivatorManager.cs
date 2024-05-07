@@ -71,9 +71,9 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
             {
                 var metricTimeSpan =
                     TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.Midifile.GetTempoMap());
-                double spawnedTime = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
+                double noteTimeMidi = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
                                      (double)metricTimeSpan.Milliseconds / 1000f;
-                interval = spawnedTime;
+                interval = noteTimeMidi;
                 if (!_pitchNameDict.ContainsKey(note.NoteName))
                 {
                     _pitchNameDict.Add(note.NoteName, 1);
@@ -84,11 +84,11 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
             {
                 var metricTimeSpan =
                     TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.Midifile.GetTempoMap());
-                double spawnedTime = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
+                double noteTimeMidi = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
                                      (double)metricTimeSpan.Milliseconds / 1000f;
-                if (spawnedTime - interval >= Define.NoteInterval)
+                if (noteTimeMidi - interval >= Define.NoteInterval)
                 {
-                    interval = spawnedTime;
+                    interval = noteTimeMidi;
                     if (!_pitchNameDict.ContainsKey(note.NoteName))
                     {
                         _pitchNameDict.Add(note.NoteName, 1);
@@ -212,13 +212,6 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
 
                 break;
         }
-        //foreach (var zone in _activators)
-        //{
-        //    foreach (var pitch in zone.Pitches)
-        //    {
-        //        Debug.LogError(zone.ZoneIndex + " " + pitch);
-        //    }
-        //}
     }
 
     public void SetSpawnedTimes(List<Melanchall.DryWetMidi.Interaction.Note> listNotes)
@@ -228,10 +221,6 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
         List<KeyValuePair<NoteName, int>> sortedList = _pitchNameDict.ToList();
         sortedList.Sort((x, y) => x.Value.CompareTo(y.Value));
         _pitchNameDict = sortedList.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-        //foreach (var pair in _pitchNameDict)
-        //{
-        //    Debug.LogError("check: " + pair.Key + " " + pair.Value);
-        //}
         DividePitchesIntoZones();
 
         double interval = 0;
@@ -240,16 +229,16 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
             var note = listNotes[i];
             if (i == 0 || i == listNotes.Count - 1)
             {
-                foreach (var zone in _activators)
+                foreach (var activator in _activators)
                 {
-                    if (zone.Pitches.Contains(note.NoteName))
+                    if (activator.Pitches.Contains(note.NoteName))
                     {
                         var metricTimeSpan =
                             TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.Midifile.GetTempoMap());
-                        double spawnedTime = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
+                        double noteTimeMidi = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
                                              (double)metricTimeSpan.Milliseconds / 1000f;
-                        zone.SpawnedTimes.Add(spawnedTime);
-                        interval = spawnedTime;
+                        activator.NoteTimeMidi.Add(noteTimeMidi);
+                        interval = noteTimeMidi;
                     }
                 }
             }
@@ -257,16 +246,16 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
             {
                 var metricTimeSpan =
                     TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.Midifile.GetTempoMap());
-                double spawnedTime = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
+                double noteTimeMidi = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds +
                                      (double)metricTimeSpan.Milliseconds / 1000f;
-                if (spawnedTime - interval >= Define.NoteInterval)
+                if (noteTimeMidi - interval >= Define.NoteInterval)
                 {
-                    foreach (var zone in _activators)
+                    foreach (var activator in _activators)
                     {
-                        if (zone.Pitches.Contains(note.NoteName))
+                        if (activator.Pitches.Contains(note.NoteName))
                         {
-                            zone.SpawnedTimes.Add(spawnedTime);
-                            interval = spawnedTime;
+                            activator.NoteTimeMidi.Add(noteTimeMidi);
+                            interval = noteTimeMidi;
                         }
                     }
                 }
