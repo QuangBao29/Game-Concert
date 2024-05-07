@@ -7,8 +7,8 @@ using UnityEngine.Serialization;
 
 public class Note : MonoBehaviour
 {
-    [Header("Events")]
-    public GameEvent onNoteInActivator;
+    //[Header("Events")]
+    //public GameEvent onNoteInActivator;
 
     private Vector3 _startPos;
     private Vector3 _endPos;

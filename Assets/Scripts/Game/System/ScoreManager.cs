@@ -29,7 +29,7 @@ public class ScoreManager : SingletonMono<ScoreManager>
 
     public static void SetScore(int score)
     {
-        _comboScore = score;
+        scoreText.text = _comboScore.ToString();
     }
 
     public static int GetScore()

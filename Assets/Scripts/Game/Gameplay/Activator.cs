@@ -12,27 +12,27 @@ public class Activator : MonoBehaviour
     public KeyCode KeyInput;
 
     [SerializeField]
-    private NoteManager _noteManager = null;
+    private NoteManager noteManager = null;
     [SerializeField]
-    private GameObject _endZone = null;
+    private GameObject endZone = null;
     [SerializeField]
-    private GameObject _startZone = null;
+    private GameObject startZone = null;
     [SerializeField]
-    private GameObject _hitZone = null;
-    [SerializeField]
-    private MeshRenderer _meshRenderer = null;
+    private GameObject hitZone = null;
+    //[SerializeField]
+    //private MeshRenderer _meshRenderer = null;
 
-    private List<Double> _spawnedTimes = new(); //timestamp that note spawned (based on midi)
+    private List<Double> spawnedTimes = new(); //timestamp that note spawned (based on midi)
     private List<Note> notes = new();
-    private List<NoteName> _pitches = new();
+    private List<NoteName> pitches = new();
     private int spawnIndex = 0;
     private int inputIndex = 0;
-    private int _zoneIndex = 0;
+    private int zoneIndex = 0;
     private float cooldown = Define.HitObjectInterval;
     private float lastClickedTime = 0;
 
-    private Vector3 _originalHitPos = new Vector3(0, 0, 0);
-    private bool _isClicked = false;
+    //private Vector3 originalHitPos = new Vector3(0, 0, 0);
+    private bool isClicked = false;
 
 
     /// <summary>
@@ -40,39 +40,39 @@ public class Activator : MonoBehaviour
     /// </summary>
     public int ZoneIndex
     {
-        get => _zoneIndex;
-        set => _zoneIndex = value;
+        get => zoneIndex;
+        set => zoneIndex = value;
     }
     public List<NoteName> Pitches
     {
-        get => _pitches;
-        set => _pitches = value;
+        get => pitches;
+        set => pitches = value;
     }
     public List<Double> SpawnedTimes
     {
-        get => _spawnedTimes;
-        set => _spawnedTimes = value;
+        get => spawnedTimes;
+        set => spawnedTimes = value;
     }
     public GameObject StartZone
     {
-        get => _startZone;
+        get => startZone;
     }
     public GameObject EndZone
     {
-        get => _endZone;
+        get => endZone;
     }
     private void Start()
     {
-        _originalHitPos = _hitZone.transform.position;
+        //originalHitPos = hitZone.transform.position;
     }
     void Update()
     {
-        if (spawnIndex < _spawnedTimes.Count)
+        if (spawnIndex < spawnedTimes.Count)
         {
             //spawn note truoc 1 khoang thoi gian NoteTime
-            if (SongManager.GetAudioSourceTime() >= _spawnedTimes[spawnIndex] - SongManager.Instance.NoteTime)
+            if (SongManager.GetAudioSourceTime() >= spawnedTimes[spawnIndex] - SongManager.Instance.NoteTime)
             {
-                var note = _noteManager.OnSpawnNotesToTarget(_startZone.transform.position, _endZone.transform.position, _hitZone.transform.position);
+                var note = noteManager.OnSpawnNotesToTarget(startZone.transform.position, endZone.transform.position, hitZone.transform.position);
                 notes.Add(note);
                 spawnIndex++;
             }
@@ -80,18 +80,18 @@ public class Activator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyInput) && Time.time - lastClickedTime > cooldown)
         {
-            OnClickDownKeyInput();
+            OnClickHitButton();
             //check note
 
         }
-        if (_hitZone.transform.position != _originalHitPos && _isClicked)
-        {
-            Invoke("OnClickUpKeyInput", Define.HitObjectInterval);
-        }
-
-        //if (inputIndex < _spawnedTimes.Count)
+        //if (hitZone.transform.position != originalHitPos && isClicked)
         //{
-        //    double timeStamp = _spawnedTimes[inputIndex];
+        //    Invoke("OnClickUpKeyInput", Define.HitObjectInterval);
+        //}
+
+        //if (inputIndex < spawnedTimes.Count)
+        //{
+        //    double timeStamp = spawnedTimes[inputIndex];
         //    double marginOfError = SongManager.Instance.MarginOfError;
         //    double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.InputDelayInMilliseconds / 1000.0);
 
@@ -120,19 +120,11 @@ public class Activator : MonoBehaviour
         //}
     }
 
-    private void OnClickDownKeyInput()
+    private void OnClickHitButton()
     {
         lastClickedTime = Time.time;
-        _hitZone.transform.position = new Vector3(_originalHitPos.x, _originalHitPos.y - 0.4f, _originalHitPos.z);
-        _meshRenderer.material = ActivatorManager.Instance.HitMaterial;
-        _isClicked = true;
-    }
-
-    private void OnClickUpKeyInput()
-    {
-        _hitZone.transform.position = _originalHitPos;
-        _meshRenderer.material = ActivatorManager.Instance.DefaultMaterial;
-        _isClicked = false;
+        //hitZone.transform.position = new Vector3(originalHitPos.x, originalHitPos.y - 0.4f, originalHitPos.z);
+        isClicked = true;
     }
 
     public void OnResponseNoteMiss(Component component, object data)

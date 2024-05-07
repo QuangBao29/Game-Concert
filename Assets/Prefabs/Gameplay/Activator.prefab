@@ -438,11 +438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyInput: 100
-  _noteManager: {fileID: 0}
-  _endZone: {fileID: 7384505564582727393}
-  _startZone: {fileID: 1689177657362015197}
-  _hitZone: {fileID: 4633207175683634121}
-  _meshRenderer: {fileID: 487530114075791100}
+  noteManager: {fileID: 0}
+  endZone: {fileID: 7384505564582727393}
+  startZone: {fileID: 1689177657362015197}
+  hitZone: {fileID: 0}
 --- !u!114 &7815402051205388735
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,13 +8,8 @@ using Melanchall.DryWetMidi.Interaction;
 
 public class ActivatorManager : SingletonMono<ActivatorManager>
 {
-    public Material DefaultMaterial = null;
-    public Material HitMaterial = null;
     private List<Activator> _activators = new();
     private Dictionary<NoteName, int> _pitchNameDict = new();
-
-    //[SerializeField]
-    //private GameManager _gameManager;
 
     public List<Activator> Activators
     {
@@ -65,7 +60,7 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
         return null;
     }
 
-    private void GetPitchesName(List<Melanchall.DryWetMidi.Interaction.Note> listNotes)
+    private void AddPitchesName(List<Melanchall.DryWetMidi.Interaction.Note> listNotes)
     {
         double interval = 0;
         //Get Pitch Name that match condition
@@ -228,7 +223,7 @@ public class ActivatorManager : SingletonMono<ActivatorManager>
 
     public void SetSpawnedTimes(List<Melanchall.DryWetMidi.Interaction.Note> listNotes)
     {
-        GetPitchesName(listNotes);
+        AddPitchesName(listNotes);
         //sort dictionary
         List<KeyValuePair<NoteName, int>> sortedList = _pitchNameDict.ToList();
         sortedList.Sort((x, y) => x.Value.CompareTo(y.Value));

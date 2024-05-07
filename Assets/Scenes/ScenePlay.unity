@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08eae0fe49c8f5498d91cdef7339cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreText: {fileID: 0}
+  scoreText: {fileID: 0}
   _comboText: {fileID: 0}
 --- !u!4 &127188492
 Transform:
@@ -259,6 +259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 768250412}
     m_Modifications:
+    - target: {fileID: 421135075532252984, guid: c725f06bdde0147f1bf23177f0b66332, type: 3}
+      propertyPath: noteManager
+      value: 
+      objectReference: {fileID: 326452008}
     - target: {fileID: 421135075532252984, guid: c725f06bdde0147f1bf23177f0b66332, type: 3}
       propertyPath: _noteManager
       value: 
@@ -688,8 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47b63b52c45ebd4e9aa24c7166bcdb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultMaterial: {fileID: 2100000, guid: bfd1b86817e90664e80005be45834a59, type: 2}
-  HitMaterial: {fileID: 2100000, guid: 2eb3a91ae370d8b469a88e2c3055a402, type: 2}
 --- !u!1 &876076625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1170,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 768250412}
     m_Modifications:
+    - target: {fileID: 421135075532252984, guid: c725f06bdde0147f1bf23177f0b66332, type: 3}
+      propertyPath: noteManager
+      value: 
+      objectReference: {fileID: 326452008}
     - target: {fileID: 421135075532252984, guid: c725f06bdde0147f1bf23177f0b66332, type: 3}
       propertyPath: _noteManager
       value: 
