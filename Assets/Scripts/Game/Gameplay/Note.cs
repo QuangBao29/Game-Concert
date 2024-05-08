@@ -16,7 +16,6 @@ public class Note : MonoBehaviour
     private double _timeInstantiated;
     private bool _isHit = false;
 
-    private bool _isPerfectScore = false;
     public Vector3 EndPos
     {
         get => _endPos;
@@ -41,7 +40,7 @@ public class Note : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject != null && gameObject.name != Define.PrefabName.NotePrefab.ToString())
+        if (gameObject != null)
         {
             double timeSinceInstantiated = SongManager.GetAudioSourceTime() - _timeInstantiated;
             float t = (float)(timeSinceInstantiated / SongManager.Instance.NoteTime);
@@ -51,7 +50,7 @@ public class Note : MonoBehaviour
                 float t2 = t - 1;
                 if (t2 > 1)
                 {
-                    OnFinishNotes();
+                    OnFinishNote();
                 }
                 else
                 {
@@ -62,49 +61,11 @@ public class Note : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(_startPos, _hitPos, t);
             }
-
-            double lowerBound = SongManager.Instance.NoteTime - SongManager.Instance.MarginOfError;
-            double upperBound = SongManager.Instance.NoteTime + SongManager.Instance.MarginOfError;
-            if (timeSinceInstantiated >= lowerBound && timeSinceInstantiated <= upperBound)
-            {
-                _isPerfectScore = true;
-            }
-            else
-            {
-                _isPerfectScore = false;
-            }
-            //if (Input.GetKeyDown(InputManager.KeyInput) && !_isHit)
-            //{
-            //    if (_inActivator && !_inPerfectHit)
-            //    {
-            //        Debug.LogError("Normal Hit");
-            //        NoteManager.Instance.OnNormalHit();
-            //        _isHit = true;
-            //        OnFinishNotes();
-            //    }
-            //    else if (_inPerfectHit)
-            //    {
-            //        Debug.LogError("Perfect Hit");
-            //        NoteManager.Instance.OnPerfectHit();
-            //        _isHit = true;
-            //        OnFinishNotes();
-            //    }
-            //    else if (!_inActivator && !_inPerfectHit)
-            //    {
-            //        NoteManager.Instance.OnMissHit();
-            //        Debug.LogError("Missed Click");
-            //        Destroy(gameObject);
-            //    }
-            //}
         }
     }
-
-    private void OnFinishNotes()
+    public void OnFinishNote()
     {
-        if (!_isHit)
-        {
-            //Debug.LogError("Missed!");
-        }
+        Debug.LogError("Note Finish");
         Destroy(gameObject);
     }
 }

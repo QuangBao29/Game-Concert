@@ -26,17 +26,4 @@ public class NoteManager : SingletonMono<NoteManager>
         note.gameObject.SetActive(true);
         return note;
     }
-    public void OnNormalHit()
-    {
-        ScoreManager.Hit();
-    }
-    public void OnPerfectHit()
-    {
-        ScoreManager.Hit();
-        ScoreManager.Hit();
-    }
-    public void OnMissHit()
-    {
-        ScoreManager.Miss();
-    }
 }

@@ -438,10 +438,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyInput: 100
+  OnNoteHit: {fileID: 11400000, guid: a9103b66fe4c74870907de86a254d925, type: 2}
   noteManager: {fileID: 0}
   endZone: {fileID: 7384505564582727393}
   startZone: {fileID: 1689177657362015197}
-  hitZone: {fileID: 0}
+  hitZone: {fileID: 3868431430830868649}
 --- !u!114 &7815402051205388735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8536065370981722761
 Transform:
   m_ObjectHideFlags: 0
@@ -495,7 +496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384505564582727393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.996, z: -0.3}
+  m_LocalPosition: {x: 0, y: -0.649, z: -0.3}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
