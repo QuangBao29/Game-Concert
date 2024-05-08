@@ -20,11 +20,13 @@ public class UIVictory : BaseUI
 
     public void OnRetryClick()
     {
+        PlaySoundOnClick();
         onRetryClick.Invoke(this, null);
     }
 
     public void OnNewGameClick()
     {
+        PlaySoundOnClick();
         onNewGameClick.Invoke(this, null);
     }
 

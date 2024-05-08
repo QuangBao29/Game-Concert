@@ -7,7 +7,7 @@ public class UISetting : BaseUI
 {
     public GameEvent onVolumeChange;
     public GameEvent onLogoutClick;
-    
+
     public Slider musicVolumeSlider;
     public Slider soundVolumeSlider;
 
@@ -24,6 +24,7 @@ public class UISetting : BaseUI
 
     public void OnBackClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(this);
         UIManager.Instance.ShowUI(UIIndex.UINavigationTab);
         UIManager.Instance.ShowUI(UIIndex.UIMainMenu);
@@ -31,6 +32,7 @@ public class UISetting : BaseUI
 
     public void OnLogoutClick()
     {
+        PlaySoundOnClick();
         onLogoutClick.Invoke(this, null);
         UIManager.Instance.HideUI(this);
         UIManager.Instance.ShowUI(UIIndex.UIAuthentication);

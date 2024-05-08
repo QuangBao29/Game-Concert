@@ -50,6 +50,7 @@ MonoBehaviour:
   onSongStart: {fileID: 11400000, guid: 0d3729b4f373a45e490c3923a028c2dd, type: 2}
   onEndGame: {fileID: 11400000, guid: e79e057eb908b4970a77830e6e0eda89, type: 2}
   updateLeaderBoard: {fileID: 11400000, guid: 873960647469546159d46616343c6758, type: 2}
+  updateReward: {fileID: 11400000, guid: 5599b12a67db24d588288ad11935ca76, type: 2}
 --- !u!114 &2316820694532861767
 MonoBehaviour:
   m_ObjectHideFlags: 0

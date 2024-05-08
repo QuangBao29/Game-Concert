@@ -28,6 +28,7 @@ public class UICharacterSelection : BaseUI
 
     private void OnCharacterClick(string characterPath)
     {
+        PlaySoundOnClick();
         _currentCharacterPath = characterPath;
         onCharacterClick.Invoke(this, new Dictionary<string, string>
         {

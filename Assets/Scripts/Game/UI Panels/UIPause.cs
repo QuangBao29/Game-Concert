@@ -36,6 +36,7 @@ public class UIPause : BaseUI
 
     public void OnResumeClick()
     {
+        PlaySoundOnClick();
         onResumeClick.Invoke(this, null);
         UIManager.Instance.HideUI(index);
         UIManager.Instance.ShowUI(UIIndex.UIHud);
@@ -43,6 +44,7 @@ public class UIPause : BaseUI
 
     public void OnRetryClick()
     {
+        PlaySoundOnClick();
         Time.timeScale = 1;
         onRetryClick.Invoke(this, null);
         UIManager.Instance.HideUI(index);
@@ -51,6 +53,7 @@ public class UIPause : BaseUI
 
     public void OnQuitClick()
     {
+        PlaySoundOnClick();
         Time.timeScale = 1;
         onQuitClick.Invoke(this, null);
     }

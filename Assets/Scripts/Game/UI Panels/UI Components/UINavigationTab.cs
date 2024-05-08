@@ -21,18 +21,21 @@ public class UINavigationTab : BaseUI
 
     public void OnPlayClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(UIManager.Instance.currentUIIndex);
         UIManager.Instance.ShowUI(UIIndex.UIModeSelection);
     }
 
     public void OnHomeClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(UIManager.Instance.currentUIIndex);
         UIManager.Instance.ShowUI(UIIndex.UIMainMenu);
     }
 
     public void OnAvatarClick()
     {
+        PlaySoundOnClick();
         var uiParam = new UIParam
         {
             Data = UIManager.Instance.currentUIIndex

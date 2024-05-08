@@ -7,6 +7,7 @@ public class GameManager : SingletonMono<GameManager>
     public GameEvent onSongStart;
     public GameEvent onEndGame;
     public GameEvent updateLeaderBoard;
+    public GameEvent updateReward;
 
     private LevelData _levelData;
     private GameState _gameState;
@@ -51,6 +52,14 @@ public class GameManager : SingletonMono<GameManager>
             Name = _levelData.SongName,
             Score = 0,
             SuccessCallback = EndGame
+        });
+
+        updateReward.Invoke(this, new RewardData
+        {
+            CoinKey = "CN",
+            CoinAmount = 150,
+            GemKey = "GM",
+            GemAmount = 20
         });
     }
 

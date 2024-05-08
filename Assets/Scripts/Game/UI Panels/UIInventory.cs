@@ -84,6 +84,7 @@ public class UIInventory : BaseUI
 
     private void OnEquipClick(string itemName)
     {
+        PlaySoundOnClick();
         _equipItem = itemName;
         DestroyInventoryItems();
         ReloadInventory();
@@ -175,6 +176,7 @@ public class UIInventory : BaseUI
 
     public void OnUnEquipClick()
     {
+        PlaySoundOnClick();
         RemoveEquipSlot();
         DestroyInventoryItems();
         ReloadInventory();

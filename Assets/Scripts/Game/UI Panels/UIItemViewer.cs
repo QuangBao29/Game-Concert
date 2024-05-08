@@ -8,6 +8,8 @@ public class UIItemViewer : BaseUI
 
     public void OnBuyClick()
     {
+        PlaySoundOnClick();        PlaySoundOnClick();
+
         onBuyClick.Invoke(this, null);
     }
 }

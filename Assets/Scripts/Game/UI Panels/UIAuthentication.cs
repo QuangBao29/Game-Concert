@@ -61,6 +61,7 @@ public class UIAuthentication : BaseUI
 
     public void OnLoginClick()
     {
+        PlaySoundOnClick();
         var loginInfo = new LoginInfo
         {
             Username = loginUsername.text,
@@ -74,6 +75,7 @@ public class UIAuthentication : BaseUI
 
     public void OnRegisterClick()
     {
+        PlaySoundOnClick();
         var registerInfo = new RegisterInfo
         {
             Username = registerUsername.text,
@@ -87,6 +89,7 @@ public class UIAuthentication : BaseUI
 
     public void OnResetPasswordClick()
     {
+        PlaySoundOnClick();
     }
 
     private void OnLoginFail()
@@ -115,6 +118,8 @@ public class UIAuthentication : BaseUI
 
     public void RegisterToLogin()
     {
+        PlaySoundOnClick();
+
         if (registerPanel.activeSelf)
         {
             registerPanel.SetActive(false);
@@ -125,6 +130,8 @@ public class UIAuthentication : BaseUI
 
     public void LoginToRegister()
     {
+        PlaySoundOnClick();
+
         if (loginPanel.activeSelf)
         {
             loginPanel.SetActive(false);

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8708279781614714694}
   - component: {fileID: -3805194101796126717}
   - component: {fileID: 5842879481560755371}
+  - component: {fileID: -6818004357678006546}
   m_Layer: 0
   m_Name: PlayFab Player Data Controller
   m_TagString: Untagged
@@ -152,6 +153,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2257718867497503436}
         m_TargetAssemblyTypeName: PlayFabPlayerDataController, Assembly-CSharp
         m_MethodName: SetPlayerData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-6818004357678006546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589542558443849906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5599b12a67db24d588288ad11935ca76, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2257718867497503436}
+        m_TargetAssemblyTypeName: PlayFabPlayerDataController, Assembly-CSharp
+        m_MethodName: AddCurrency
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,7 +13,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
     public UserData PlayerData;
 
     public GameEvent onPlayerTitleDataRetrieved;
-    
+
     public void GetAllData()
     {
         GetInventory(null, null);
@@ -94,8 +94,15 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
         var temp = (RewardData)data;
         PlayFabClientAPI.AddUserVirtualCurrency(new AddUserVirtualCurrencyRequest
         {
-            VirtualCurrency = temp.Key,
-            Amount = temp.Amount
-        }, null, PlayFabErrorHandler.HandleError);
+            VirtualCurrency = temp.CoinKey,
+            Amount = temp.CoinAmount
+        }, _ =>
+        {
+            PlayFabClientAPI.AddUserVirtualCurrency(new AddUserVirtualCurrencyRequest
+            {
+                VirtualCurrency = temp.GemKey,
+                Amount = temp.GemAmount
+            }, _ => { GetInventory(this, null); }, PlayFabErrorHandler.HandleError);
+        }, PlayFabErrorHandler.HandleError);
     }
 }

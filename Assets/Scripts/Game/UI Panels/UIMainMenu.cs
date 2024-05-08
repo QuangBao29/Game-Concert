@@ -5,18 +5,21 @@ public class UIMainMenu : BaseUI
 {
     public void OnShopClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(index);
         UIManager.Instance.ShowUI(UIIndex.UIShop);
     }
 
     public void OnInventoryClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(index);
         UIManager.Instance.ShowUI(UIIndex.UIInventory);
     }
 
     public void OnSettingClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(index);
         UIManager.Instance.HideUI(UIIndex.UINavigationTab);
         UIManager.Instance.ShowUI(UIIndex.UISetting);
@@ -30,6 +33,7 @@ public class UIMainMenu : BaseUI
 
     public void OnCharacterSelectionClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(index);
         UIManager.Instance.ShowUI(UIIndex.UICharacterSelection);
     }

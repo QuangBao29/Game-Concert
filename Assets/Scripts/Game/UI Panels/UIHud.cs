@@ -1,4 +1,3 @@
-using EventData;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -12,18 +11,23 @@ public class UIHud : BaseUI
 
     public GameObject equipSlot;
     public GameEvent onPauseClick;
+    public GameEvent onUseItem;
 
     private ItemData _itemData;
     private Sprite _equipSlotSprite;
+    private string _equipItem;
+    private Image _equipSlotImage;
 
     protected override void Awake()
     {
         base.Awake();
         _itemData = Resources.Load<ItemData>("Scriptable Objects/Item Data");
+        _equipItem = "None";
     }
 
     public void OnPauseClick()
     {
+        PlaySoundOnClick();
         onPauseClick.Invoke(this, null);
         UIManager.Instance.HideUI(index);
         UIManager.Instance.ShowUI(UIIndex.UIPause);
@@ -71,23 +75,23 @@ public class UIHud : BaseUI
     protected override void OnShow(UIParam param = null)
     {
         base.OnShow(param);
-        var equipItem = PlayFabPlayerDataController.Instance.PlayerTitleData["Equip Item"].Value;
-        var equipSlotImage = equipSlot.transform.Find("Item").GetComponent<Image>();
-        if (equipItem != "None")
+        _equipItem = PlayFabPlayerDataController.Instance.PlayerTitleData["Equip Item"].Value;
+        _equipSlotImage = equipSlot.transform.Find("Item").GetComponent<Image>();
+        if (_equipItem != "None")
         {
             if (!_equipSlotSprite)
             {
-                _equipSlotSprite = ResourceManager.LoadSprite(_itemData.ItemPath + equipItem + ".asset");
+                _equipSlotSprite = ResourceManager.LoadSprite(_itemData.ItemPath + _equipItem + ".asset");
             }
 
-            equipSlotImage.sprite = _equipSlotSprite;
-            equipSlotImage.color =
-                new Color(equipSlotImage.color.r, equipSlotImage.color.g, equipSlotImage.color.b, 1.0f);
+            _equipSlotImage.sprite = _equipSlotSprite;
+            _equipSlotImage.color =
+                new Color(_equipSlotImage.color.r, _equipSlotImage.color.g, _equipSlotImage.color.b, 1.0f);
         }
         else
         {
-            equipSlotImage.color =
-                new Color(equipSlotImage.color.r, equipSlotImage.color.g, equipSlotImage.color.b, 0.0f);
+            _equipSlotImage.color =
+                new Color(_equipSlotImage.color.r, _equipSlotImage.color.g, _equipSlotImage.color.b, 0.0f);
         }
     }
 
@@ -99,4 +103,14 @@ public class UIHud : BaseUI
             Data = data
         });
     }
+
+    public void OnUseItemClick()
+    {
+        PlaySoundOnClick();
+        if (_equipItem == "None") return;
+        _equipSlotImage.color =
+            new Color(_equipSlotImage.color.r, _equipSlotImage.color.g, _equipSlotImage.color.b, 0.0f);
+        onUseItem.Invoke(this, _equipItem);
+    }
+
 }

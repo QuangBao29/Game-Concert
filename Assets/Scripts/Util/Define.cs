@@ -78,8 +78,10 @@ namespace EventData
 
     public struct RewardData
     {
-        public string Key;
-        public int Amount;
+        public string CoinKey;
+        public int CoinAmount;
+        public string GemKey;
+        public int GemAmount;
     }
 
     public struct LeaderBoardReqInfo

@@ -39,6 +39,7 @@ public class UISongSelection : BaseUI
 
     public void OnPlayClick()
     {
+        PlaySoundOnClick();
         if (_songIndex != -1)
         {
             onPlayClick.Invoke(this, new LevelData
@@ -51,8 +52,8 @@ public class UISongSelection : BaseUI
 
     private void OnSongClick(int songIndex)
     {
-        _songIndex = songIndex;
         PlaySoundOnClick();
+        _songIndex = songIndex;
         playerRankTxt.SetText("UnRanked");
         onSongClick.Invoke(this, new LeaderBoardReqInfo
         {

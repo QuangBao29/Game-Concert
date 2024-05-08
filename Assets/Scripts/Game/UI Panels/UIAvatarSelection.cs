@@ -12,6 +12,7 @@ public class UIAvatarSelection : BaseUI
 
     public void OnBackClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(this);
         UIManager.Instance.ShowUI(_prevUIIndex);
         UIManager.Instance.ShowUI(UIIndex.UINavigationTab);
