@@ -147,6 +147,14 @@ namespace GameData
     }
 }
 
+public enum HitType
+{
+    Perfect,
+    //Good,
+    //Normal,
+    Miss
+}
+
 
 public static class Define
 {
