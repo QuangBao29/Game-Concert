@@ -32,10 +32,11 @@ namespace UI
 
     public class UIItemViewerParam : UIParam
     {
+        public string ItemId;
         public string ItemName;
         public string Description;
         public string Currency;
-        public int Price;
+        public uint Price;
     }
 }
 

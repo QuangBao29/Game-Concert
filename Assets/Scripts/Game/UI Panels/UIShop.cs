@@ -28,12 +28,13 @@ public class UIShop : BaseUI
         _itemData = Resources.Load<ItemData>("Scriptable Objects/Item Data");
     }
 
-    private void OnItemClick(string itemName, string description, string currency, int price)
+    private void OnItemClick(string itemId, string itemName, string description, string currency, uint price)
     {
         PlaySoundOnClick();
         UIManager.Instance.HideUI(this);
         UIManager.Instance.ShowUI(UIIndex.UIItemViewer, new UIItemViewerParam
         {
+            ItemId = itemId,
             ItemName = itemName,
             Description = description,
             Currency = currency,
@@ -70,8 +71,8 @@ public class UIShop : BaseUI
             var buyButton = shopItemGameObject.transform.Find("Buy Button").GetComponent<Button>();
             var itemPrice = buyButton.transform.Find("Price").GetComponent<TextMeshProUGUI>();
             var currencyIcon = buyButton.transform.Find("Icon").GetComponent<Image>();
-            
-            var viewButton = shopItemGameObject.transform.Find("View Button");
+
+            var viewButton = shopItemGameObject.transform.Find("View Button").GetComponent<Button>();
             var itemIcon = shopItemGameObject.transform.Find("Item Icon");
 
 
@@ -101,9 +102,9 @@ public class UIShop : BaseUI
                     iconSprite = _listItemSprite[currency];
                 }
 
-                viewButton.GetComponent<Button>().onClick.AddListener(() =>
+                viewButton.onClick.AddListener(() =>
                 {
-                    OnItemClick(item.DisplayName, item.Description, currency, (int)price);
+                    OnItemClick(item.ItemId, item.DisplayName, item.Description, currency, price);
                 });
 
                 buyButton.onClick.AddListener(() =>
@@ -119,7 +120,6 @@ public class UIShop : BaseUI
                 itemPrice.SetText(price.ToString());
                 currencyIcon.sprite = iconSprite;
                 itemIcon.GetComponent<Image>().sprite = itemSprite;
-
             }
         }
     }

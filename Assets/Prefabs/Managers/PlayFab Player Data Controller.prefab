@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerTitleDataRetrieved: {fileID: 11400000, guid: fd45db1d2def940d8b6dbe945e65b118, type: 2}
+  onInventoryUpdated: {fileID: 11400000, guid: 96ddaf22657754d13abad13cc09c47e4, type: 2}
 --- !u!114 &-2091873979469560223
 MonoBehaviour:
   m_ObjectHideFlags: 0

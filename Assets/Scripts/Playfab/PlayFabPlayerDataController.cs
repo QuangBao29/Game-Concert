@@ -12,6 +12,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
     public Dictionary<string, UserDataRecord> PlayerTitleData;
     public UserData PlayerData;
     public GameEvent onPlayerTitleDataRetrieved;
+    public GameEvent onInventoryUpdated;
 
     public void GetAllData()
     {
@@ -45,6 +46,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
                 Gem = Currencies["GM"],
                 Username = "User"
             };
+            onInventoryUpdated.Invoke(this, PlayerData);
         }, PlayFabErrorHandler.HandleError);
     }
 
