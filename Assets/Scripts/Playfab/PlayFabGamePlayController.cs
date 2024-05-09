@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using PlayFab.ClientModels;
 using PlayFab;
@@ -25,11 +26,29 @@ public class PlayFabGamePlayController : PersistentManager<PlayFabGamePlayContro
 
     public void ConsumeItems(Component sender, object data)
     {
+        var itemId = (string)data;
+        var itemInstanceId = PlayFabPlayerDataController.Instance.GetItemInstanceId(itemId);
+
+        if (string.IsNullOrEmpty(itemInstanceId))
+        {
+            return;
+        }
+
+        var playerData = new Dictionary<string, string>
+        {
+            { "Equip Item", "None" }
+        };
+        PlayFabPlayerDataController.Instance.SetPlayerData(this, playerData);
+
         var req = new ConsumeItemRequest
         {
             ConsumeCount = 1,
-            // ItemInstanceId = id
+            ItemInstanceId = itemInstanceId
         };
-        PlayFabClientAPI.ConsumeItem(req, null, PlayFabErrorHandler.HandleError);
+        PlayFabClientAPI.ConsumeItem(req, _ =>
+            {
+                PlayFabPlayerDataController.Instance.GetAllData();
+            },
+            PlayFabErrorHandler.HandleError);
     }
 }

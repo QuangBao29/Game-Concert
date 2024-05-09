@@ -11,7 +11,6 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
     public List<ItemInstance> Inventory { get; } = new();
     public Dictionary<string, UserDataRecord> PlayerTitleData;
     public UserData PlayerData;
-
     public GameEvent onPlayerTitleDataRetrieved;
 
     public void GetAllData()
@@ -104,5 +103,23 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
                 Amount = temp.GemAmount
             }, _ => { GetInventory(this, null); }, PlayFabErrorHandler.HandleError);
         }, PlayFabErrorHandler.HandleError);
+    }
+
+    public string GetItemInstanceId(string displayName)
+    {
+        if (displayName == "None")
+        {
+            return string.Empty;
+        }
+
+        foreach (var item in Inventory)
+        {
+            if (item.DisplayName == displayName)
+            {
+                return item.ItemInstanceId;
+            }
+        }
+
+        return string.Empty;
     }
 }

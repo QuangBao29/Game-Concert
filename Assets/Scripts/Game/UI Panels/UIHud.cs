@@ -110,7 +110,7 @@ public class UIHud : BaseUI
         if (_equipItem == "None") return;
         _equipSlotImage.color =
             new Color(_equipSlotImage.color.r, _equipSlotImage.color.g, _equipSlotImage.color.b, 0.0f);
+
         onUseItem.Invoke(this, _equipItem);
     }
-
 }

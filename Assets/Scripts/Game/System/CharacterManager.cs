@@ -22,6 +22,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
     private void Start()
     {
         _characterAnimator = ResourceManager.LoadAnimator(AnimatorPath);
+        _currentCharacterPath = "";
     }
 
     public void Dance(Component sender, object data)
@@ -32,14 +33,17 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     public void LoadCharacter(Component sender, object data)
     {
-        _currentCharacterPath = PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value;
-        _characterPrefab = ResourceManager.LoadPrefabAsset(_currentCharacterPath);
+        if (_currentCharacterPath != PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value)
+        {
+            _currentCharacterPath = PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value;
+            _characterPrefab = ResourceManager.LoadPrefabAsset(_currentCharacterPath);
 
-        _character = Instantiate(_characterPrefab);
-        _character.transform.position = _characterPosition;
+            _character = Instantiate(_characterPrefab);
+            _character.transform.position = _characterPosition;
 
-        _animator = _character.GetComponent<Animator>();
-        _animator.runtimeAnimatorController = _characterAnimator;
+            _animator = _character.GetComponent<Animator>();
+            _animator.runtimeAnimatorController = _characterAnimator;
+        }
     }
 
     public void ChangeCharacter(Component sender, object data)

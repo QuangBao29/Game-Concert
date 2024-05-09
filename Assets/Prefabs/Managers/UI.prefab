@@ -18198,7 +18198,7 @@ MonoBehaviour:
   streak: {fileID: 3962188023354446800}
   equipSlot: {fileID: 3962188023841335923}
   onPauseClick: {fileID: 11400000, guid: c797a209ad3084515a16e1a99490e54a, type: 2}
-  onUseItem: {fileID: 0}
+  onUseItem: {fileID: 11400000, guid: c0e7739896a8646078e6f4206bf3e3b7, type: 2}
 --- !u!114 &6486683231712930324
 MonoBehaviour:
   m_ObjectHideFlags: 0
