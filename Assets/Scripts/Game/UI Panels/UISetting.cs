@@ -43,7 +43,7 @@ public class UISetting : BaseUI
         onVolumeChange.Invoke(this, new VolumeData
         {
             SoundVolume = soundVolumeSlider.value,
-            MusicVolume = soundVolumeSlider.value
+            MusicVolume = musicVolumeSlider.value
         });
     }
 }

@@ -123,23 +123,4 @@ public class UIShop : BaseUI
             }
         }
     }
-
-    protected override void OnHide()
-    {
-        base.OnHide();
-        foreach (var (_, sprite) in _listItemSprite)
-        {
-            ResourceManager.UnloadSpriteAsset(sprite);
-        }
-
-        _listItemSprite.Clear();
-    }
-
-    public void OnCharacterCategoryClick()
-    {
-    }
-
-    public void OnItemCategoryClick()
-    {
-    }
 }

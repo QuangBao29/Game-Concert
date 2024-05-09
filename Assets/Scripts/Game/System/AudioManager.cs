@@ -111,7 +111,7 @@ public class AudioManager : PersistentManager<AudioManager>
 
     private void Update()
     {
-        if (!musicChannel.isPlaying && !_isSongEndInvoke && musicChannel.clip != null)
+        if (!musicChannel.isPlaying && !_isSongEndInvoke && musicChannel.clip != null && Application.isFocused)
         {
             onSongEnd.Invoke(this, null);
             _isSongEndInvoke = true;

@@ -35,6 +35,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
     {
         if (_currentCharacterPath != PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value)
         {
+            Debug.Log("Load Character");
             _currentCharacterPath = PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value;
             _characterPrefab = ResourceManager.LoadPrefabAsset(_currentCharacterPath);
 

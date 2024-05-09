@@ -23,12 +23,13 @@ public class GameManager : SingletonMono<GameManager>
 
     private void Start()
     {
+        Debug.Log("Game Manager");
         Invoke(nameof(StartGame), 3.0f);
     }
 
     public void StartGame()
     {
-        SongManager.Instance.ReadFromFile(_levelData.SongIndex);
+        // SongManager.Instance.ReadFromFile(_levelData.SongIndex);
         _gameState = GameState.Play;
         _coin = 0;
         _gem = 0;
