@@ -65,7 +65,7 @@ public class Note : MonoBehaviour
     }
     public void OnFinishNote()
     {
-        Debug.LogError("Note Finish");
+        //Debug.LogError("Note Finish");
         Destroy(gameObject);
     }
 }

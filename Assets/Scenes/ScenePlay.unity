@@ -710,7 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ActivatorManager: {fileID: 768250413}
   _songDelayInSeconds: 0
-  _marginOfError: 0
+  _marginOfError: 0.3
   _noteTime: 1
   _inputDelayInMilliseconds: 0
 --- !u!1001 &1110836368
@@ -720,6 +720,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3727449598412073826, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3962188022426197193, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -790,6 +794,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962188023807485726, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962188023838671239, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3962188023887528832, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
