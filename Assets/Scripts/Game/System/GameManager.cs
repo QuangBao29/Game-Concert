@@ -23,7 +23,6 @@ public class GameManager : SingletonMono<GameManager>
 
     private void Start()
     {
-        Debug.Log("Game Manager");
         Invoke(nameof(StartGame), 3.0f);
     }
 
