@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIHud : BaseUI
 {
     public TextMeshProUGUI score;
-    public TextMeshProUGUI multiplier;
     public TextMeshProUGUI streak;
 
     public GameObject equipSlot;
@@ -49,14 +48,6 @@ public class UIHud : BaseUI
         }
     }
 
-    public void UpdateMultiplier(Component sender, object data)
-    {
-        if (data is int combo)
-        {
-            SetMultiplier(combo.ToString());
-        }
-    }
-
     private void SetScore(string newScore)
     {
         score.SetText(newScore);
@@ -67,13 +58,10 @@ public class UIHud : BaseUI
         streak.SetText(newStreak);
     }
 
-    private void SetMultiplier(string newMultiplier)
-    {
-        multiplier.SetText(newMultiplier);
-    }
-
     protected override void OnShow(UIParam param = null)
     {
+        score.SetText("0");
+        score.SetText("0 HIT");
         base.OnShow(param);
         _equipItem = PlayFabPlayerDataController.Instance.PlayerTitleData["Equip Item"].Value;
         _equipSlotImage = equipSlot.transform.Find("Item").GetComponent<Image>();
@@ -93,6 +81,7 @@ public class UIHud : BaseUI
             _equipSlotImage.color =
                 new Color(_equipSlotImage.color.r, _equipSlotImage.color.g, _equipSlotImage.color.b, 0.0f);
         }
+        
     }
 
     public void EndGame(Component sender, object data)
