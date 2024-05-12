@@ -27,7 +27,6 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     public void Dance(Component sender, object data)
     {
-        Debug.Log("Base Layer." + _dance.name);
         _animator.Play("Base Layer." + _dance.name);
     }
 
@@ -35,7 +34,6 @@ public class CharacterManager : PersistentManager<CharacterManager>
     {
         if (_currentCharacterPath != PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value)
         {
-            Debug.Log("Load Character");
             _currentCharacterPath = PlayFabPlayerDataController.Instance.PlayerTitleData["Character Path"].Value;
             _characterPrefab = ResourceManager.LoadPrefabAsset(_currentCharacterPath);
 
