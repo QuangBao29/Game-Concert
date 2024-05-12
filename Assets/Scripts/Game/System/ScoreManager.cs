@@ -34,7 +34,6 @@ public class ScoreManager : SingletonMono<ScoreManager>
                 comboCount = 0;
                 float score = Define.BaseScore;
                 totalScore += score;
-                Debug.LogError("comboCount: " + comboCount);
             }
             scoreText.text = totalScore.ToString();
             comboCountText.text = comboCount.ToString() + " HIT";
@@ -45,22 +44,18 @@ public class ScoreManager : SingletonMono<ScoreManager>
     {
         if (comboCount >= 0 && comboCount <= 4)
         {
-            Debug.LogError(string.Format("{0} => {1}", comboCount, 1));
             return 1;
         }
         else if (comboCount >= 5 && comboCount <= 9)
         {
-            Debug.LogError(string.Format("{0} => {1}", comboCount, 2));
             return 2;
         }
         else if (comboCount >= 10 && comboCount <= 19)
         {
-            Debug.LogError(string.Format("{0} => {1}", comboCount, 3));
             return 3;
         }
         else
         {
-            Debug.LogError(string.Format("{0} => {1}", comboCount, 5));
             return 5;
         }
     }
