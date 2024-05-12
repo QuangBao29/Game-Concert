@@ -28,11 +28,9 @@ public class GameManager : SingletonMono<GameManager>
 
     public void StartGame()
     {
-        int outValue;
-        if (int.TryParse(_levelData.SongName, out outValue) == false)
+        if (int.TryParse(_levelData.SongName, out var outValue) == false)
         {
             Debug.LogError("Song name is not a number");
-            return;
         }
         else
         {
@@ -59,7 +57,7 @@ public class GameManager : SingletonMono<GameManager>
         updateLeaderBoard.Invoke(this, new UpdateLeaderBoardReqInfo
         {
             Name = _levelData.SongName,
-            Score = 0,
+            Score = 0, // Score Manager
             SuccessCallback = EndGame
         });
 

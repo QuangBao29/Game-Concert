@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using TMPro;
+using UI;
 
-public class UIInfo : MonoBehaviour
+public class UIInfo : BaseUI
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI displayText;
+
+    protected override void OnShow(UIParam param = null)
     {
-        
+        base.OnShow(param);
+        if (param != null)
+        {
+            var tmp = (string)param.Data;
+            displayText.SetText(tmp);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnHideClick()
     {
-        
+        UIManager.Instance.HideUI(this);
     }
 }
