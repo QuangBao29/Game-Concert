@@ -13,6 +13,9 @@ public class ScoreManager : SingletonMono<ScoreManager>
     private float totalScore = 0;
     private int comboCount = 0;
 
+    private int _coin;
+    private int _gem;
+    
     void Start()
     {
         comboScore = 0;
@@ -58,5 +61,11 @@ public class ScoreManager : SingletonMono<ScoreManager>
         {
             return 5;
         }
+    }
+
+    public void ProcessItem(Component sender, object data)
+    {
+        // data item
+
     }
 }
