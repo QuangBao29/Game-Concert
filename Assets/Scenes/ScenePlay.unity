@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127188492}
   - component: {fileID: 127188491}
+  - component: {fileID: 127188493}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1110836370}
   comboCountText: {fileID: 1110836369}
-  multiplierText: {fileID: 0}
+  multiplierText: {fileID: 1110836371}
 --- !u!4 &127188492
 Transform:
   m_ObjectHideFlags: 0
@@ -253,6 +254,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127188493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127188490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a9103b66fe4c74870907de86a254d925, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 127188491}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: OnResponseNoteHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &162177472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +853,17 @@ MonoBehaviour:
 --- !u!114 &1110836370 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3962188023955093369, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
+  m_PrefabInstance: {fileID: 1110836368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1110836371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3962188023392030854, guid: 00a4d8fcd3787468981f98d5c0fc9ea2, type: 3}
   m_PrefabInstance: {fileID: 1110836368}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

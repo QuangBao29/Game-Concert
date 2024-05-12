@@ -96,3 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6670611a4a82b4391b312913053c28c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnNoteMiss: {fileID: 11400000, guid: 0081127ff9d734589a220db7be3f4f02, type: 2}

@@ -19,15 +19,16 @@ public class ScoreManager : SingletonMono<ScoreManager>
         comboScore = 0;
     }
 
-    public void OnNoteHit(Component sender, object data)
+    public void OnResponseNoteHit(Component sender, object data)
     {
+        Debug.LogError("check hit");
         if (data is HitType hitData)
         {
+            Debug.LogError("check perfect");
             if (hitData == HitType.Perfect)
             {
                 comboCount += 1;
                 int multiScore = GetMultiplier();
-                Debug.LogError("perfect hit");
                 float score = Define.PerfectScore * multiScore;
                 //comboScore += score;
                 totalScore += score;
@@ -35,8 +36,8 @@ public class ScoreManager : SingletonMono<ScoreManager>
             }
             else if (hitData == HitType.Miss)
             {
+                Debug.LogError("check miss");
                 comboCount = 1;
-                Debug.LogError("miss hit");
                 float score = Define.BaseScore;
                 //comboScore = score;
                 totalScore += score;
@@ -49,6 +50,7 @@ public class ScoreManager : SingletonMono<ScoreManager>
 
     private int GetMultiplier()
     {
+        Debug.LogError("comboCount: " + comboCount);
         if (comboCount >= 1 && comboCount <= 5)
         {
             return 1;

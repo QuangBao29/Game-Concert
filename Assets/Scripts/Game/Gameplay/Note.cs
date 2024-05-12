@@ -7,8 +7,8 @@ using UnityEngine.Serialization;
 
 public class Note : MonoBehaviour
 {
-    //[Header("Events")]
-    //public GameEvent onNoteInActivator;
+    [Header("Events")]
+    public GameEvent OnNoteMiss;
 
     private Vector3 _startPos;
     private Vector3 _endPos;
@@ -50,7 +50,7 @@ public class Note : MonoBehaviour
                 float t2 = t - 1;
                 if (t2 > 1)
                 {
-                    OnFinishNote();
+                    OnNoteMiss.Invoke(null, null);
                 }
                 else
                 {
