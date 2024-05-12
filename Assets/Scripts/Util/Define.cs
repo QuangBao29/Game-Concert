@@ -27,6 +27,7 @@ namespace UI
         UIHud,
         UIVictory,
         UIPause,
+        UIInfo,
         None
     }
 

@@ -39,6 +39,15 @@ public class UIItemViewer : BaseUI
         });
     }
 
+    
+    public void OnBackClick()
+    {
+        PlaySoundOnClick();
+        UIManager.Instance.HideUI(this);        
+        UIManager.Instance.ShowUI(UIIndex.UIShop);        
+    }
+
+    
     protected override void OnShow(UIParam param = null)
     {
         base.OnShow(param);
