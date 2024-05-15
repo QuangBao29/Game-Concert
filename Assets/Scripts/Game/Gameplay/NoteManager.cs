@@ -16,7 +16,8 @@ public class NoteManager : SingletonMono<NoteManager>
     public Note OnSpawnNotesToTarget(Vector3 startPos, Vector3 endPos, Vector3 hitPos)
     {
         var idx = Random.Range(0, _listNotePrefabs.Count);
-        var note = GCUtils.InstantiateObject<Note>(_listNotePrefabs[idx], _noteContainer.transform);
+        var note = GCUtils.InstantiateObject<Note>(_listNotePrefabs[idx], 
+            _noteContainer.transform);
         note.StartPos = startPos;
         note.EndPos = endPos;
         note.HitPos = hitPos;

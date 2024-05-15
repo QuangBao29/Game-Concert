@@ -10,39 +10,38 @@ public class Note : MonoBehaviour
     [Header("Events")]
     public GameEvent OnNoteMiss;
 
-    private Vector3 _startPos;
-    private Vector3 _endPos;
-    private Vector3 _hitPos;
-    private double _timeInstantiated;
-    private bool _isHit = false;
+    private Vector3 startPos;
+    private Vector3 endPos;
+    private Vector3 hitPos;
+    private double timeInstantiated;
 
     public Vector3 EndPos
     {
-        get => _endPos;
-        set => _endPos = value;
+        get => endPos;
+        set => endPos = value;
     }
 
     public Vector3 StartPos
     {
-        get => _startPos;
-        set => _startPos = value;
+        get => startPos;
+        set => startPos = value;
     }
 
     public Vector3 HitPos
     {
-        get => _hitPos;
-        set => _hitPos = value;
+        get => hitPos;
+        set => hitPos = value;
     }
     private void Start()
     {
-        _timeInstantiated = SongManager.GetAudioSourceTime();
+        timeInstantiated = SongManager.GetAudioSourceTime();
     }
 
     private void Update()
     {
         if (gameObject != null)
         {
-            double timeSinceInstantiated = SongManager.GetAudioSourceTime() - _timeInstantiated;
+            double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
             float t = (float)(timeSinceInstantiated / SongManager.Instance.NoteTime);
 
             if (t > 1)
@@ -54,18 +53,17 @@ public class Note : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(_hitPos, _endPos, t2);
+                    transform.position = Vector3.Lerp(hitPos, endPos, t2);
                 }
             }
             else
             {
-                transform.position = Vector3.Lerp(_startPos, _hitPos, t);
+                transform.position = Vector3.Lerp(startPos, hitPos, t);
             }
         }
     }
     public void OnFinishNote()
     {
-        //Debug.LogError("Note Finish");
         Destroy(gameObject);
     }
 }
