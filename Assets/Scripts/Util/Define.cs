@@ -166,7 +166,7 @@ public static class Define
     public static int NoteInterval = 2;
     public static int NumOfActivators = 2;
 
-    public static string MidiFilePath = "/Resources/MIDI/";
+    public static string MidiFilePath = "/MIDI/";
     public static string AudioFilePath = "/Audio/Music/";
     public static string AudioFileExtension = ".ogg";
     public static string MidiFileExtension = ".mid";

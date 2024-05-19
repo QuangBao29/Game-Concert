@@ -8,8 +8,11 @@ public class Preloader : MonoBehaviour
 {
     public bool clearCache;
 
-    private static async void DownloadAssets()
+    private async void Start()
     {
+        if (clearCache)
+            Caching.ClearCache();
+
         var resourceLocator = await Addressables.InitializeAsync().Task;
         var allKeys = resourceLocator.Keys.ToList();
 
@@ -24,14 +27,6 @@ public class Preloader : MonoBehaviour
                 await Task.Yield();
             }
         }
-    }
-
-    private async void Start()
-    {
-        if (clearCache)
-            Caching.ClearCache();
-
-        DownloadAssets();
 
         var handleSo = Addressables.LoadAssetAsync<ScriptableObject>("event");
         await handleSo.Task;
@@ -41,7 +36,7 @@ public class Preloader : MonoBehaviour
         foreach (var manager in persistentManagers.listManagers)
         {
             var handle = Addressables.LoadAssetAsync<GameObject>(manager);
-            handle.WaitForCompletion();
+            await handle.Task;
 
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {

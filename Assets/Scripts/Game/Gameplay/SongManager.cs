@@ -57,7 +57,7 @@ public class SongManager : SingletonMono<SongManager>
         Debug.LogError("check song name: " + "");
         //string midiFileName = songIndex.ToString() + Define.MidiFileExtension;
         string midiPath = Path.Combine(Define.MidiFilePath, midiFileName);
-        Midifile = MidiFile.Read(Application.dataPath + midiPath);
+        Midifile = MidiFile.Read(Application.streamingAssetsPath + midiPath);
         //AudioManager.Instance.PlaySong(null, 0);
         GetDataFromMidi();
     }
