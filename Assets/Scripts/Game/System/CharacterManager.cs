@@ -21,20 +21,21 @@ public class CharacterManager : PersistentManager<CharacterManager>
     private const string AnimationPath = "Assets/Animations/Dances/";
     public AssetReference animatorRef;
 
-    private async void Start()
+    public override async void Awake()
     {
+        base.Awake();
         var handleCharacterAnimator = Addressables.LoadAssetAsync<RuntimeAnimatorController>(animatorRef);
         await handleCharacterAnimator.Task;
         if (handleCharacterAnimator.Status == AsyncOperationStatus.Succeeded)
         {
             _characterAnimator = handleCharacterAnimator.Result;
-            Debug.Log(_characterAnimator.name);
         }
 
-        Application.quitting += () =>
-        {
-            Addressables.Release(handleCharacterAnimator);
-        };
+        Application.quitting += () => { Addressables.Release(handleCharacterAnimator); };
+    }
+
+    private void Start()
+    {
         _currentCharacterPath = "";
     }
 
