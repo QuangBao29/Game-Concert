@@ -60,7 +60,7 @@ MonoBehaviour:
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
-    m_LogResourceManagerExceptions: 1
+    m_LogResourceManagerExceptions: 0
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
   m_ProfileSettings:
     m_Profiles:
@@ -105,7 +105,7 @@ MonoBehaviour:
       - m_Id: ef6921bc435f042fe8a4bf683079a61c
         m_Value: ServerData/[BuildTarget]
       - m_Id: 2a4ffb315dac245eea10fde8d0bd2d71
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: https://vconcert.blob.core.windows.net/android
     m_ProfileEntryNames:
     - m_Id: f454995065fb044b9a445da6bdc2d14b
       m_Name: BuildTarget
@@ -140,7 +140,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 45a228d4e0c5a4574b72e65c9381f126, type: 2}
   - {fileID: 11400000, guid: 876ce984e4a6c45baa181b229c4d695e, type: 2}
   - {fileID: 11400000, guid: e6321bbe394144de28a6844b658df70b, type: 2}
-  m_ActiveProfileId: cf052d78da490459ca4fc4890935f62f
+  m_ActiveProfileId: 117e27e5dddcc49a5b5b80fe6e341d9a
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}

@@ -51,6 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d694fbb34ea284fb28a9f740f3e76a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorRef:
+    m_AssetGUID: 0aaf7c86bab1d4df7b8cec0d5c93f51a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!114 &-5923665043096771696
 MonoBehaviour:
   m_ObjectHideFlags: 0

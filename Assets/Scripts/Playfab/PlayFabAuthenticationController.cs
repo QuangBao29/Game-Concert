@@ -174,7 +174,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
     {
         while (!PlayFabFlags.Instance.IsInit())
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.15f);
         }
 
         callback();

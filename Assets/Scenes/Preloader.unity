@@ -168,3 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearCache: 1
+  sceneRef:
+    m_AssetGUID: 19872da5ec3cc4977987627f9638db84
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

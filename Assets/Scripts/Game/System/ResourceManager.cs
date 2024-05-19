@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class ResourceManager : PersistentManager<ResourceManager>
 {
     private static readonly List<AsyncOperationHandle> ListHandle = new();
-    private static AsyncOperationHandle _sceneHandle;
+    public AsyncOperationHandle SceneHandle;
 
     private void Start()
     {
@@ -35,20 +35,12 @@ public class ResourceManager : PersistentManager<ResourceManager>
         Addressables.ReleaseInstance(gameObject);
     }
 
-    public static void UnloadAnimationClipAsset(AnimationClip animationClip)
-    {
-        Addressables.Release(animationClip);
-    }
     
     public static void UnloadAudioClipAsset(AudioClip audioClip)
     {
         Addressables.Release(audioClip);
     }
 
-    public static void UnloadAnimatorControllerAsset(RuntimeAnimatorController animator)
-    {
-        Addressables.Release(animator);
-    }
 
     public static void UnloadSpriteAsset(Sprite sprite)
     {
@@ -102,7 +94,7 @@ public class ResourceManager : PersistentManager<ResourceManager>
     {
         var sceneData = Resources.Load<SceneData>("Scriptable Objects/Scene Data");
         var handleScene = Addressables.LoadSceneAsync(sceneData.ListSceneReference[sceneIndex], LoadSceneMode.Additive);
-        _sceneHandle = handleScene;
+        SceneHandle = handleScene;
         handleScene.WaitForCompletion();
 
         if (handleScene.Status == AsyncOperationStatus.Succeeded)
@@ -113,6 +105,6 @@ public class ResourceManager : PersistentManager<ResourceManager>
 
     public void UnloadScene()
     {
-        Addressables.UnloadSceneAsync(_sceneHandle);
+        Addressables.UnloadSceneAsync(SceneHandle);
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using EventData;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 
 public class CharacterManager : PersistentManager<CharacterManager>
@@ -17,11 +19,22 @@ public class CharacterManager : PersistentManager<CharacterManager>
     private readonly Vector3 _characterRotation = new(0, 0, 0);
 
     private const string AnimationPath = "Assets/Animations/Dances/";
-    private const string AnimatorPath = "Assets/Animations/Controllers/SMPL.controller";
+    public AssetReference animatorRef;
 
-    private void Start()
+    private async void Start()
     {
-        _characterAnimator = ResourceManager.LoadAnimator(AnimatorPath);
+        var handleCharacterAnimator = Addressables.LoadAssetAsync<RuntimeAnimatorController>(animatorRef);
+        await handleCharacterAnimator.Task;
+        if (handleCharacterAnimator.Status == AsyncOperationStatus.Succeeded)
+        {
+            _characterAnimator = handleCharacterAnimator.Result;
+            Debug.Log(_characterAnimator.name);
+        }
+
+        Application.quitting += () =>
+        {
+            Addressables.Release(handleCharacterAnimator);
+        };
         _currentCharacterPath = "";
     }
 
@@ -49,7 +62,6 @@ public class CharacterManager : PersistentManager<CharacterManager>
     {
         Destroy(_character);
         ResourceManager.UnloadPrefabAsset(_characterPrefab);
-        ResourceManager.UnloadAnimatorControllerAsset(_characterAnimator);
 
         var temp = (Dictionary<string, string>)data;
         _currentCharacterPath = temp["Character Path"];
