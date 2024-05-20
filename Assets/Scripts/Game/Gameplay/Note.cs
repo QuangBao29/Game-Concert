@@ -46,6 +46,7 @@ public class Note : MonoBehaviour
 
             if (t > 1)
             {
+                OnNoteMiss.Invoke(null, null);
                 float t2 = t - 1;
                 if (t2 > 1)
                 {

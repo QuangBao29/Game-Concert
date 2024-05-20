@@ -97,6 +97,7 @@ public class Activator : MonoBehaviour
 
     public void OnResponseNoteMiss(Component component, object data)
     {
+        OnNoteHit.Invoke(null, HitType.Miss);
         if (notes.Count == 0)
         {
             return;
