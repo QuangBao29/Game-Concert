@@ -12,12 +12,10 @@ public class SongManager : SingletonMono<SongManager>
     public static MidiFile Midifile = null;
     [SerializeField] private ActivatorManager _ActivatorManager = null;
     [SerializeField] private float _songDelayInSeconds = 0;
-    [SerializeField] private double _marginOfError = 0; //In Seconds
+    [SerializeField] private double _marginOfError = 0;
     [SerializeField] private float _noteTime = 1;
 
     [SerializeField] private int _inputDelayInMilliseconds = 0;
-    //public float noteSpawnY = 0;
-    //public float noteTapY = 0;
 
     private string _songName = "TakeMeToYourHeart";
 
@@ -45,20 +43,11 @@ public class SongManager : SingletonMono<SongManager>
         set => _inputDelayInMilliseconds = value;
     }
 
-
-    private void Start()
+    public void ReadFromFile(string songName)
     {
-        //ReadFromFile();
-    }
-
-    public void ReadFromFile(int songIndex)
-    {
-        string midiFileName = _songName + Define.MidiFileExtension;
-        Debug.LogError("check song name: " + "");
-        //string midiFileName = songIndex.ToString() + Define.MidiFileExtension;
+        string midiFileName = songName + Define.MidiFileExtension;
         string midiPath = Path.Combine(Define.MidiFilePath, midiFileName);
         Midifile = MidiFile.Read(Application.streamingAssetsPath + midiPath);
-        //AudioManager.Instance.PlaySong(null, 0);
         GetDataFromMidi();
     }
 

@@ -28,18 +28,11 @@ public class GameManager : SingletonMono<GameManager>
 
     public void StartGame()
     {
-        if (int.TryParse(_levelData.SongName, out var outValue) == false)
-        {
-            Debug.LogError("Song name is not a number");
-        }
-        else
-        {
-            SongManager.Instance.ReadFromFile(outValue);
-            _gameState = GameState.Play;
-            _coin = 0;
-            _gem = 0;
-            onSongStart.Invoke(this, null);
-        }
+        SongManager.Instance.ReadFromFile(_levelData.SongName);
+        _gameState = GameState.Play;
+        _coin = 0;
+        _gem = 0;
+        onSongStart.Invoke(this, null);
     }
 
     private void EndGame()
