@@ -6,20 +6,16 @@ using System;
 
 public class ScoreManager : SingletonMono<ScoreManager>
 {
-    [SerializeField] private TextMeshProUGUI scoreText = null;
-    [SerializeField] private TextMeshProUGUI comboCountText = null;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI comboCountText;
 
-    private float comboScore = 0;
-    private float totalScore = 0;
-    private int comboCount = 0;
+    private float _comboScore = 0;
+    public float totalScore = 0;
+    private int _comboCount = 0;
 
     private int _coin;
     private int _gem;
-    
-    void Start()
-    {
-        comboScore = 0;
-    }
+
 
     public void OnResponseNoteHit(Component sender, object data)
     {
@@ -27,45 +23,44 @@ public class ScoreManager : SingletonMono<ScoreManager>
         {
             if (hitData == HitType.Perfect)
             {
-                comboCount += 1;
-                int multiplier = GetMultiplier();
+                _comboCount += 1;
+                var multiplier = GetMultiplier();
                 float score = Define.PerfectScore * multiplier;
                 totalScore += score;
             }
             else if (hitData == HitType.Miss)
             {
-                comboCount = 0;
+                _comboCount = 0;
                 float score = Define.BaseScore;
                 totalScore += score;
             }
-            scoreText.text = totalScore.ToString();
-            comboCountText.text = comboCount.ToString() + " HIT";
+
+            scoreText.text = ((int)totalScore).ToString();
+            comboCountText.text = _comboCount + " HIT";
         }
     }
 
     private int GetMultiplier()
     {
-        if (comboCount >= 0 && comboCount <= 4)
+        if (_comboCount is >= 0 and <= 4)
         {
             return 1;
         }
-        else if (comboCount >= 5 && comboCount <= 9)
+
+        if (_comboCount is >= 5 and <= 9)
         {
             return 2;
         }
-        else if (comboCount >= 10 && comboCount <= 19)
+
+        if (_comboCount is >= 10 and <= 19)
         {
             return 3;
         }
-        else
-        {
-            return 5;
-        }
+
+        return 5;
     }
 
     public void ProcessItem(Component sender, object data)
     {
-        // data item
-
     }
 }

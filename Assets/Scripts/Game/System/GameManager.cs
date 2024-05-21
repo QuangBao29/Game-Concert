@@ -41,7 +41,7 @@ public class GameManager : SingletonMono<GameManager>
         {
             Coin = _coin,
             Gem = _gem,
-            Score = 0
+            Score = (int)ScoreManager.Instance.totalScore
         });
     }
 
@@ -50,7 +50,7 @@ public class GameManager : SingletonMono<GameManager>
         updateLeaderBoard.Invoke(this, new UpdateLeaderBoardReqInfo
         {
             Name = _levelData.SongName,
-            Score = 0, // Score Manager
+            Score = (int)ScoreManager.Instance.totalScore,
             SuccessCallback = EndGame
         });
 
