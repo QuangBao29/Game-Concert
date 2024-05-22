@@ -12,8 +12,6 @@ public class GameManager : SingletonMono<GameManager>
     private LevelData _levelData;
     private GameState _gameState;
 
-    private int _coin;
-    private int _gem;
 
     public void Awake()
     {
@@ -30,8 +28,6 @@ public class GameManager : SingletonMono<GameManager>
     {
         SongManager.Instance.ReadFromFile(_levelData.SongName);
         _gameState = GameState.Play;
-        _coin = 0;
-        _gem = 0;
         onSongStart.Invoke(this, null);
     }
 
@@ -39,8 +35,8 @@ public class GameManager : SingletonMono<GameManager>
     {
         onEndGame.Invoke(this, new EndLevelData
         {
-            Coin = _coin,
-            Gem = _gem,
+            Coin = ScoreManager.Instance.coin,
+            Gem = ScoreManager.Instance.gem,
             Score = (int)ScoreManager.Instance.totalScore
         });
     }
@@ -57,9 +53,9 @@ public class GameManager : SingletonMono<GameManager>
         updateReward.Invoke(this, new RewardData
         {
             CoinKey = "CN",
-            CoinAmount = 150,
+            CoinAmount = ScoreManager.Instance.coin,
             GemKey = "GM",
-            GemAmount = 20
+            GemAmount = ScoreManager.Instance.gem
         });
     }
 
@@ -90,13 +86,6 @@ public class GameManager : SingletonMono<GameManager>
             default:
                 throw new ArgumentOutOfRangeException();
         }
-    }
-
-    public void AddReward(Component sender, object data)
-    {
-        var temp = (NoteReward)data;
-        _coin += temp.Coin;
-        _gem += temp.Gem;
     }
 }
 

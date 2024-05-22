@@ -1,38 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class ScoreManager : SingletonMono<ScoreManager>
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI comboCountText;
 
-    private float _comboScore = 0;
-    public float totalScore = 0;
-    private int _comboCount = 0;
+    public float totalScore;
+    private int _comboCount;
 
-    private int _coin;
-    private int _gem;
+    private int _highestMultiplier;
+    private int _multiplier;
+
+    public int coin;
+    public int gem;
+
+    private void Start()
+    {
+        totalScore = 0;
+        _highestMultiplier = 0;
+        _multiplier = 0;
+        _comboCount = 0;
+        coin = 0;
+        gem = 0;
+    }
 
 
     public void OnResponseNoteHit(Component sender, object data)
     {
         if (data is HitType hitData)
         {
+            UpdateMultiplier();
             if (hitData == HitType.Perfect)
             {
                 _comboCount += 1;
-                var multiplier = GetMultiplier();
-                float score = Define.PerfectScore * multiplier;
+                float score = Define.PerfectScore * _multiplier;
                 totalScore += score;
+                GenerateRandomGemAmount(1, 5);
+                GenerateRandomCoinAmount(20, 50);
             }
             else if (hitData == HitType.Miss)
             {
                 _comboCount = 0;
                 float score = Define.BaseScore;
                 totalScore += score;
+                GenerateRandomCoinAmount(5, 10);
             }
 
             scoreText.text = ((int)totalScore).ToString();
@@ -40,27 +52,51 @@ public class ScoreManager : SingletonMono<ScoreManager>
         }
     }
 
-    private int GetMultiplier()
+    private void UpdateMultiplier()
     {
-        if (_comboCount is >= 0 and <= 4)
+        _multiplier = _comboCount switch
         {
-            return 1;
-        }
+            >= 0 and <= 4 => 1,
+            <= 9 => 2,
+            <= 19 => 3,
+            _ => 5
+        };
 
-        if (_comboCount is >= 5 and <= 9)
+        if (_multiplier > _highestMultiplier)
         {
-            return 2;
+            _highestMultiplier = _multiplier;
         }
+    }
 
-        if (_comboCount is >= 10 and <= 19)
-        {
-            return 3;
-        }
+    private void GenerateRandomGemAmount(int min, int max)
+    {
+        gem += Random.Range(min, max);
+    }
 
-        return 5;
+    private void GenerateRandomCoinAmount(int min, int max)
+    {
+        coin += Random.Range(min, max);
     }
 
     public void ProcessItem(Component sender, object data)
     {
+        var tmp = (string)data;
+        switch (tmp)
+        {
+            case "Booster":
+                break;
+            case "Bronze Ticket":
+                break;
+            case "Diamond Ticket":
+                break;
+            case "Golden Ticket":
+                break;
+            case "Shield Combo":
+                break;
+            case "Shield Multiplier":
+                break;
+            case "Silver Ticket":
+                break;
+        }
     }
 }

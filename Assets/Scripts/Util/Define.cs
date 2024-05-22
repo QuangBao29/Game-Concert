@@ -104,11 +104,6 @@ namespace EventData
         public int SongIndex;
     }
 
-    public struct NoteReward
-    {
-        public int Coin;
-        public int Gem;
-    }
 
     public struct EndLevelData
     {
@@ -116,13 +111,14 @@ namespace EventData
         public int Gem;
         public int Score;
     }
-    
+
     public struct UpdateLeaderBoardReqInfo
     {
         public string Name;
         public int Score;
         public Action SuccessCallback;
-    }}
+    }
+}
 
 
 namespace GameData
@@ -154,6 +150,7 @@ namespace GameData
 public enum HitType
 {
     Perfect,
+
     //Good,
     //Normal,
     Miss
