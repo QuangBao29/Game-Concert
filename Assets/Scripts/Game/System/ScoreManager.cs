@@ -42,7 +42,7 @@ public class ScoreManager : SingletonMono<ScoreManager>
             else if (hitData == HitType.Miss)
             {
                 _comboCount = 0;
-                float score = Define.BaseScore;
+                float score = Define.NormalScore;
                 totalScore += score;
                 GenerateRandomCoinAmount(5, 10);
             }
@@ -58,8 +58,8 @@ public class ScoreManager : SingletonMono<ScoreManager>
         {
             >= 0 and <= 4 => 1,
             <= 9 => 2,
-            <= 19 => 3,
-            _ => 5
+            <= 19 => 4,
+            _ => 8
         };
 
         if (_multiplier > _highestMultiplier)

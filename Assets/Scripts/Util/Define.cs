@@ -168,7 +168,6 @@ public static class Define
     public static string AudioFileExtension = ".ogg";
     public static string MidiFileExtension = ".mid";
 
-    public static int BaseScore = 5;
     public static int NormalScore = 10;
     public static int GoodScore = 20;
     public static int PerfectScore = 100;
