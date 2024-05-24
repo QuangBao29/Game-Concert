@@ -8,9 +8,12 @@ public class ScoreManager : SingletonMono<ScoreManager>
 
     public float totalScore;
     private int _comboCount;
+    private int _highestComboCount;
 
     private int _highestMultiplier;
     private int _multiplier;
+    private float _rewardMultiplier;
+    private int _boosterMultiplier;
 
     public int coin;
     public int gem;
@@ -18,11 +21,14 @@ public class ScoreManager : SingletonMono<ScoreManager>
     private void Start()
     {
         totalScore = 0;
+        _boosterMultiplier = 1;
         _highestMultiplier = 0;
+        _highestComboCount = 0;
         _multiplier = 0;
         _comboCount = 0;
         coin = 0;
         gem = 0;
+        _rewardMultiplier = 1.0f;
     }
 
 
@@ -34,7 +40,12 @@ public class ScoreManager : SingletonMono<ScoreManager>
             if (hitData == HitType.Perfect)
             {
                 _comboCount += 1;
-                float score = Define.PerfectScore * _multiplier;
+                if (_comboCount > _highestComboCount)
+                {
+                    _highestComboCount = _comboCount;
+                }
+
+                float score = Define.PerfectScore * _multiplier * _boosterMultiplier;
                 totalScore += score;
                 GenerateRandomGemAmount(1, 5);
                 GenerateRandomCoinAmount(20, 50);
@@ -70,12 +81,12 @@ public class ScoreManager : SingletonMono<ScoreManager>
 
     private void GenerateRandomGemAmount(int min, int max)
     {
-        gem += Random.Range(min, max);
+        gem += (int)(Random.Range(min, max) * _rewardMultiplier);
     }
 
     private void GenerateRandomCoinAmount(int min, int max)
     {
-        coin += Random.Range(min, max);
+        coin += (int)(Random.Range(min, max) * _rewardMultiplier);
     }
 
     public void ProcessItem(Component sender, object data)
@@ -84,18 +95,25 @@ public class ScoreManager : SingletonMono<ScoreManager>
         switch (tmp)
         {
             case "Booster":
+                _boosterMultiplier = 2;
                 break;
             case "Bronze Ticket":
+                _rewardMultiplier = 1.5f;
                 break;
             case "Diamond Ticket":
+                _rewardMultiplier = 2.5f;
                 break;
             case "Golden Ticket":
+                _rewardMultiplier = 2.0f;
                 break;
             case "Shield Combo":
+                _comboCount = _highestComboCount;
                 break;
             case "Shield Multiplier":
+                _multiplier = _highestMultiplier;
                 break;
             case "Silver Ticket":
+                _rewardMultiplier = 1.75f;
                 break;
         }
     }

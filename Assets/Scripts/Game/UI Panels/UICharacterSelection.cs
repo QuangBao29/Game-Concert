@@ -29,6 +29,8 @@ public class UICharacterSelection : BaseUI
     private void OnCharacterClick(string characterPath)
     {
         PlaySoundOnClick();
+        if (_currentCharacterPath == characterPath) return;
+
         _currentCharacterPath = characterPath;
         onCharacterClick.Invoke(this, new Dictionary<string, string>
         {
@@ -54,7 +56,7 @@ public class UICharacterSelection : BaseUI
             characterButton.GetComponent<Image>().sprite = _characterAvatar;
             characterButton.GetComponent<Button>().onClick.AddListener(() =>
             {
-                _currentCharacterPath = _characterData.ModelPath + character.Path + character.ModelName; 
+                _currentCharacterPath = _characterData.ModelPath + character.Path + character.ModelName;
                 OnCharacterClick(_currentCharacterPath);
             });
         }
