@@ -11,6 +11,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
     private const string PlayFabRememberMeId = "PlayfabRememberMeId";
     private const string PlayFabRememberMe = "PlayfabRememberMe";
     public bool isLoggedIn;
+    public string UserName;
 
     public override void Awake()
     {
@@ -48,13 +49,23 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
             PlayFabGameDataController.Instance.GetAllData();
             PlayFabPlayerDataController.Instance.GetAllData();
             PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
+            GetAccountInfo();
             StartCoroutine(IsDataInit(tmp.AutoLoginSuccessCallback));
         }, error =>
         {
-            PlayFabErrorHandler.HandleError(error);
+            PlayFabErrorHandler.Instance.HandleError(error);
             Logout(null, null);
         });
     }
+
+    private void GetAccountInfo()
+    {
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest
+        {
+            PlayFabId = PlayFabPlayerDataController.Instance.PlayerId
+        }, result => { UserName = result.AccountInfo.Username; }, PlayFabErrorHandler.Instance.HandleError);
+    }
+
 
     private void LoginWithEmail(LoginInfo data)
     {
@@ -70,10 +81,11 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
+                GetAccountInfo();
                 StartCoroutine(IsDataInit(data.LoginSuccessCallback));
                 RememberMe();
             },
-            PlayFabErrorHandler.HandleError);
+            PlayFabErrorHandler.Instance.HandleError);
     }
 
     private void LoginWithUsername(LoginInfo data)
@@ -90,10 +102,11 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
+                GetAccountInfo();
                 StartCoroutine(IsDataInit(data.LoginSuccessCallback));
                 RememberMe();
             },
-            PlayFabErrorHandler.HandleError);
+            PlayFabErrorHandler.Instance.HandleError);
     }
 
     #endregion
@@ -115,7 +128,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
             error =>
             {
                 tmp.RegisterFailCallback();
-                PlayFabErrorHandler.HandleError(error);
+                PlayFabErrorHandler.Instance.HandleError(error);
             });
     }
 

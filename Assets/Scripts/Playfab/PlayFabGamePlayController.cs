@@ -16,7 +16,7 @@ public class PlayFabGamePlayController : PersistentManager<PlayFabGamePlayContro
             VirtualCurrency = tmp.UnitCurrency,
             Price = (int)tmp.UnitPrice
         };
-        PlayFabClientAPI.PurchaseItem(req, OnPurchaseItemSuccess, PlayFabErrorHandler.HandleError);
+        PlayFabClientAPI.PurchaseItem(req, OnPurchaseItemSuccess, PlayFabErrorHandler.Instance.HandleError);
     }
 
     private void OnPurchaseItemSuccess(PurchaseItemResult result)
@@ -49,6 +49,6 @@ public class PlayFabGamePlayController : PersistentManager<PlayFabGamePlayContro
             {
                 PlayFabPlayerDataController.Instance.GetAllData();
             },
-            PlayFabErrorHandler.HandleError);
+            PlayFabErrorHandler.Instance.HandleError);
     }
 }

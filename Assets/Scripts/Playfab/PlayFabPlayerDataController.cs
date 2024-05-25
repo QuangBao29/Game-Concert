@@ -43,11 +43,10 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
             PlayerData = new UserData
             {
                 Coin = Currencies["CN"],
-                Gem = Currencies["GM"],
-                Username = "User"
+                Gem = Currencies["GM"]
             };
             onInventoryUpdated.Invoke(this, PlayerData);
-        }, PlayFabErrorHandler.HandleError);
+        }, PlayFabErrorHandler.Instance.HandleError);
     }
 
     public void SetPlayerData(Component sender, object data)
@@ -69,7 +68,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
                     PlayerTitleData[key] = value;
                 }
             }
-        }, PlayFabErrorHandler.HandleError);
+        }, PlayFabErrorHandler.Instance.HandleError);
     }
 
 
@@ -87,7 +86,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
                 onPlayerTitleDataRetrieved.Invoke(this, null);
                 PlayFabFlags.Instance.TitleData = true;
             },
-            PlayFabErrorHandler.HandleError);
+            PlayFabErrorHandler.Instance.HandleError);
     }
 
     public void AddCurrency(Component sender, object data)
@@ -103,8 +102,8 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
             {
                 VirtualCurrency = temp.GemKey,
                 Amount = temp.GemAmount
-            }, _ => { GetInventory(this, null); }, PlayFabErrorHandler.HandleError);
-        }, PlayFabErrorHandler.HandleError);
+            }, _ => { GetInventory(this, null); }, PlayFabErrorHandler.Instance.HandleError);
+        }, PlayFabErrorHandler.Instance.HandleError);
     }
 
     public string GetItemInstanceId(string displayName)

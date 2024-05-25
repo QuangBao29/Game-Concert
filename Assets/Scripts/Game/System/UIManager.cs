@@ -111,4 +111,12 @@ public class UIManager : SingletonMono<UIManager>
     {
         return _uiDictionary[uiIndex];
     }
+
+    public void ErrorUI(Component sender, object data)
+    {
+        ShowUI(UIIndex.UIInfo, new UIParam
+        {
+            Data = (string)data
+        });
+    }
 }

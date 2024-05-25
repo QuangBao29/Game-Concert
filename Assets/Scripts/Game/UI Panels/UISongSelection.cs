@@ -126,6 +126,8 @@ public class UISongSelection : BaseUI
 
     private void ShowPlayerRank()
     {
-        playerRankTxt.SetText("Rank: #" + PlayFabGameDataController.Instance.PlayerRank);
+        playerRankTxt.SetText(PlayFabGameDataController.Instance.PlayerRank != -1
+            ? "Rank: #" + PlayFabGameDataController.Instance.PlayerRank
+            : "UnRanked");
     }
 }

@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8986134299955365823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e822a337bb754ed0a93d8d96e5a8e28, type: 2}
   m_sharedMaterial: {fileID: -6786839204148433670, guid: 7e822a337bb754ed0a93d8d96e5a8e28, type: 2}
@@ -13129,7 +13129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10 HIT
+  m_text: 0 HIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087126272643b47149d8547ac2b11b32, type: 2}
   m_sharedMaterial: {fileID: -5910855778761541260, guid: 087126272643b47149d8547ac2b11b32, type: 2}
@@ -25160,6 +25160,7 @@ GameObject:
   - component: {fileID: 9199623140783090915}
   - component: {fileID: 9199623140783090912}
   - component: {fileID: 8857923147143286537}
+  - component: {fileID: 1912712351303139888}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -25297,6 +25298,34 @@ MonoBehaviour:
   - {fileID: 7195938258616212231}
   currentUIIndex: 0
   isLoggedIn: 0
+--- !u!114 &1912712351303139888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199623140783090913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c91b395d55d1d433392ae05f1805f3fb, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8857923147143286537}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ErrorUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9199623140838092782
 GameObject:
   m_ObjectHideFlags: 0

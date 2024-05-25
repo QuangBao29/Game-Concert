@@ -28,7 +28,7 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
             }
 
             PlayFabFlags.Instance.Catalog = true;
-        }, PlayFabErrorHandler.HandleError);
+        }, PlayFabErrorHandler.Instance.HandleError);
     }
 
     public void GetLeaderBoard(Component sender, object data)
@@ -41,15 +41,14 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 StartPosition = 0,
                 StatisticName = tmp.Name
             };
-
             GetPlayerRank(tmp.Name, () =>
             {
                 PlayFabClientAPI.GetLeaderboard(req, result =>
                     {
                         CurrentLeaderBoard = result.Leaderboard;
-                        tmp.SuccessCallback();
+                        tmp.SuccessCallback?.Invoke();
                     },
-                    PlayFabErrorHandler.HandleError
+                    PlayFabErrorHandler.Instance.HandleError
                 );
             });
         }
@@ -66,10 +65,17 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
         PlayFabClientAPI.GetLeaderboardAroundPlayer(req,
             result =>
             {
-                PlayerRank = result.Leaderboard[0].Position + 1;
-                callback();
+                if (result.Leaderboard.Count == 0)
+                {
+                    PlayerRank = -1;
+                }
+                else
+                {
+                    PlayerRank = result.Leaderboard[0].Position + 1;
+                    callback?.Invoke();
+                }
             },
-            PlayFabErrorHandler.HandleError
+            PlayFabErrorHandler.Instance.HandleError
         );
     }
 
@@ -88,7 +94,7 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
             }
         };
         PlayFabClientAPI.UpdatePlayerStatistics(req, _ => { GetPlayerRank(temp.Name, temp.SuccessCallback); },
-            PlayFabErrorHandler.HandleError);
+            PlayFabErrorHandler.Instance.HandleError);
     }
 
     public void GetAllData()

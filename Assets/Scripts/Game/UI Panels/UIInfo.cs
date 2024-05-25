@@ -17,6 +17,7 @@ public class UIInfo : BaseUI
 
     public void OnHideClick()
     {
+        PlaySoundOnClick();
         UIManager.Instance.HideUI(this);
     }
 }

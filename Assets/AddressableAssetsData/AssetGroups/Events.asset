@@ -177,6 +177,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - event
+  - m_GUID: c91b395d55d1d433392ae05f1805f3fb
+    m_Address: Assets/Scripts/Game/Game Events/PlayFab/OnErrorResult.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - event
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
   m_SchemaSet:
