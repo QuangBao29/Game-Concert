@@ -70,8 +70,8 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 else
                 {
                     PlayerRank = result.Leaderboard[0].Position + 1;
-                    callback?.Invoke();
                 }
+                callback?.Invoke();
             },
             PlayFabErrorHandler.Instance.HandleError
         );

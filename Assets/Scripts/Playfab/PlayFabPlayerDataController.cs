@@ -31,7 +31,6 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
             {
                 Username = result.AccountInfo.Username
             };
-            Debug.Log(result.AccountInfo.Username);
             GetInventory(null, null);
         }, PlayFabErrorHandler.Instance.HandleError);
     }
@@ -88,10 +87,6 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
     private void GetPlayerData()
     {
         var listDataKeys = Resources.Load<PlayerData>("Scriptable Objects/Player Data Key").PlayerDataKeys;
-        foreach (var listDataKey in listDataKeys)
-        {
-            Debug.Log(listDataKey);
-        }
 
         var req = new GetUserDataRequest
         {
@@ -102,10 +97,7 @@ public class PlayFabPlayerDataController : PersistentManager<PlayFabPlayerDataCo
             {
                 PlayerTitleData?.Clear();
                 PlayerTitleData = result.Data;
-
-                Debug.Log(result.Data["Equip Item"].Value);
-                Debug.Log(result.Data["Character Path"].Value);
-
+                
                 onPlayerTitleDataRetrieved.Invoke(this, null);
                 PlayFabFlags.Instance.TitleData = true;
             },
