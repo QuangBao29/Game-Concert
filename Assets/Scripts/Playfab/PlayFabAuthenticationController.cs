@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -11,7 +12,6 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
     private const string PlayFabRememberMeId = "PlayfabRememberMeId";
     private const string PlayFabRememberMe = "PlayfabRememberMe";
     public bool isLoggedIn;
-    public string UserName;
 
     public override void Awake()
     {
@@ -46,24 +46,15 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
         }, result =>
         {
             isLoggedIn = true;
+            PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
             PlayFabGameDataController.Instance.GetAllData();
             PlayFabPlayerDataController.Instance.GetAllData();
-            PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
-            GetAccountInfo();
             StartCoroutine(IsDataInit(tmp.AutoLoginSuccessCallback));
         }, error =>
         {
             PlayFabErrorHandler.Instance.HandleError(error);
             Logout(null, null);
         });
-    }
-
-    private void GetAccountInfo()
-    {
-        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest
-        {
-            PlayFabId = PlayFabPlayerDataController.Instance.PlayerId
-        }, result => { UserName = result.AccountInfo.Username; }, PlayFabErrorHandler.Instance.HandleError);
     }
 
 
@@ -78,10 +69,9 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
         PlayFabClientAPI.LoginWithEmailAddress(request, result =>
             {
                 isLoggedIn = true;
+                PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
-                PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
-                GetAccountInfo();
                 StartCoroutine(IsDataInit(data.LoginSuccessCallback));
                 RememberMe();
             },
@@ -99,10 +89,9 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
         PlayFabClientAPI.LoginWithPlayFab(request, result =>
             {
                 isLoggedIn = true;
+                PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
                 PlayFabGameDataController.Instance.GetAllData();
                 PlayFabPlayerDataController.Instance.GetAllData();
-                PlayFabPlayerDataController.Instance.PlayerId = result.PlayFabId;
-                GetAccountInfo();
                 StartCoroutine(IsDataInit(data.LoginSuccessCallback));
                 RememberMe();
             },
@@ -124,7 +113,17 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
             Password = tmp.Password,
             RequireBothUsernameAndEmail = false
         };
-        PlayFabClientAPI.RegisterPlayFabUser(request, _ => tmp.RegisterSuccessCallback(),
+
+        PlayFabClientAPI.RegisterPlayFabUser(request, _ =>
+            {
+                tmp.RegisterSuccessCallback();
+                var playerData = new Dictionary<string, string>
+                {
+                    { "Equip Item", "None" },
+                    { "Character Path", "Models/SMPL/SMPL" }
+                };
+                PlayFabPlayerDataController.Instance.SetPlayerData(this, playerData);
+            },
             error =>
             {
                 tmp.RegisterFailCallback();
@@ -140,6 +139,7 @@ public class PlayFabAuthenticationController : PersistentManager<PlayFabAuthenti
     {
         PlayFabClientAPI.ForgetAllCredentials();
         ClearRememberMe();
+        PlayFabPlayerDataController.Instance.PlayerId = "";
     }
 
     #endregion

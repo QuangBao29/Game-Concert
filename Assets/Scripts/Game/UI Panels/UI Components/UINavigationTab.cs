@@ -16,7 +16,7 @@ public class UINavigationTab : BaseUI
         var temp = PlayFabPlayerDataController.Instance.PlayerData;
         SetCoin(temp.Coin.ToString());
         SetGem(temp.Gem.ToString());
-        SetUsername(PlayFabAuthenticationController.Instance.UserName);
+        SetUsername(temp.Username);
     }
 
     public void OnPlayClick()
@@ -65,6 +65,6 @@ public class UINavigationTab : BaseUI
         var temp = (UserData)data;
         SetCoin(temp.Coin.ToString());
         SetGem(temp.Gem.ToString());
-        SetUsername(PlayFabAuthenticationController.Instance.UserName);
+        SetUsername(temp.Username);
     }
 }

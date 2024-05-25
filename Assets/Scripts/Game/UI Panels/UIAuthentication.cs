@@ -46,13 +46,10 @@ public class UIAuthentication : BaseUI
 
     private static void AutoLoginFail()
     {
-        Debug.Log("Login Failed");
-        // UI Manager Raise Warning
     }
 
     private void AutoLoginSuccess()
     {
-        Debug.Log("Login Success");
         UIManager.Instance.HideUI(this);
         UIManager.Instance.ShowUI(UIIndex.UIMainMenu);
         UIManager.Instance.ShowUI(UIIndex.UINavigationTab);

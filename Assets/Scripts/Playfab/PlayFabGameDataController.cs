@@ -41,16 +41,14 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 StartPosition = 0,
                 StatisticName = tmp.Name
             };
-            GetPlayerRank(tmp.Name, () =>
-            {
-                PlayFabClientAPI.GetLeaderboard(req, result =>
-                    {
-                        CurrentLeaderBoard = result.Leaderboard;
-                        tmp.SuccessCallback?.Invoke();
-                    },
-                    PlayFabErrorHandler.Instance.HandleError
-                );
-            });
+            PlayFabClientAPI.GetLeaderboard(req, result =>
+                {
+                    CurrentLeaderBoard = result.Leaderboard;
+                    GetPlayerRank(tmp.Name, () => { tmp.SuccessCallback?.Invoke(); }
+                    );
+                },
+                PlayFabErrorHandler.Instance.HandleError
+            );
         }
     }
 
@@ -65,7 +63,7 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
         PlayFabClientAPI.GetLeaderboardAroundPlayer(req,
             result =>
             {
-                if (result.Leaderboard.Count == 0)
+                if (CurrentLeaderBoard.Count == result.Leaderboard[0].Position)
                 {
                     PlayerRank = -1;
                 }

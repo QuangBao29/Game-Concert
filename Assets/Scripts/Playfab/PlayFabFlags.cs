@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayFabFlags : PersistentManager<PlayFabFlags>
 {
     public bool Inventory;
@@ -17,5 +19,13 @@ public class PlayFabFlags : PersistentManager<PlayFabFlags>
     public bool IsInit()
     {
         return Inventory && Currency && TitleData && Catalog;
+    }
+
+    public void Reset(Component sender, object data)
+    {
+        Inventory = false;
+        Currency = false;
+        TitleData = false;
+        Catalog = false;
     }
 }
