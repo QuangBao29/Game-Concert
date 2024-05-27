@@ -12,6 +12,6 @@ public class PlayFabErrorHandler : PersistentManager<PlayFabErrorHandler>
 
     public void HandleError(PlayFabError error)
     {
-        PlayFabError(error.GenerateErrorReport());
+        PlayFabError(error.ErrorMessage);
     }
 }
