@@ -91,7 +91,13 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 }
             }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(req, _ => { GetPlayerRank(temp.Name, temp.SuccessCallback); },
+        PlayFabClientAPI.UpdatePlayerStatistics(req, _ => {
+            GetLeaderBoard(this, new LeaderBoardReqInfo
+            {
+                Name = temp.Name,
+                SuccessCallback = temp.SuccessCallback
+            });
+        },
             PlayFabErrorHandler.Instance.HandleError);
     }
 
