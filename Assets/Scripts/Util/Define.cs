@@ -28,6 +28,8 @@ namespace UI
         UIVictory,
         UIPause,
         UIInfo,
+        UILevelEditor,
+        UIConcertEditor,
         None
     }
 
@@ -104,12 +106,20 @@ namespace EventData
         public int SongIndex;
     }
 
+    public struct UserLevelData
+    {
+        public string SongPath;
+        public string MIDIPath;
+        public string AnimPath;
+    }
+
 
     public struct EndLevelData
     {
         public int Coin;
         public int Gem;
         public int Score;
+        public bool IsCustom;
     }
 
     public struct UpdateLeaderBoardReqInfo
@@ -129,6 +139,15 @@ namespace GameData
         public string Title;
         public string Artist;
         public string Cover;
+    }
+
+    [Serializable]
+    public struct CustomSongData
+    {
+        public string SongPath;
+        public string SongName;
+        public string MIDIPath;
+        public string AnimationPath;
     }
 
     [Serializable]

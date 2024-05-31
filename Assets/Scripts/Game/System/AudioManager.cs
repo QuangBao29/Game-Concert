@@ -13,15 +13,14 @@ public class AudioManager : PersistentManager<AudioManager>
     public GameEvent onSongEnd;
 
     private bool _isSongEndInvoke;
-    private int _songIndex;
-
+    private bool _isSettingUp;
     public override void Awake()
     {
         base.Awake();
         _songData = Resources.Load<SongData>("Scriptable Objects/Song Data");
         _audioData = Resources.Load<AudioData>("Scriptable Objects/Audio Data");
-        _songIndex = -1;
         _isSongEndInvoke = false;
+        _isSettingUp = true;
     }
 
     private void Start()
@@ -38,20 +37,33 @@ public class AudioManager : PersistentManager<AudioManager>
 
     public void SetSong(Component sender, object data)
     {
+        _isSettingUp = true;
         var temp = (LevelData)data;
-        _songIndex = temp.SongIndex;
+        _isSongEndInvoke = false;
+        var audioClip = ResourceManager.LoadAudioClip(_songData.SongPath + _songData.ListSong[temp.SongIndex].Title);
+        if (audioClip != null)
+        {
+            musicChannel.clip = audioClip;
+        }
     }
 
+    public async void SetCustomSong(Component sender, object data)
+    {
+        _isSettingUp = true;
+        var temp = (UserLevelData)data;
+        _isSongEndInvoke = false;
+        var audioClip = ResourceManager.Instance.LoadLocalAudioClip(temp.SongPath);
+        if (audioClip != null)
+        {
+            musicChannel.clip = await audioClip;
+        }
+    }
 
     public void PlaySong(Component sender, object data)
     {
-        if (_songIndex != -1)
-        {
-            _isSongEndInvoke = false;
-            var audioClip = ResourceManager.LoadAudioClip(_songData.SongPath + _songData.ListSong[_songIndex].Title);
-            musicChannel.clip = audioClip;
-            musicChannel.Play();
-        }
+        musicChannel.Play();
+        _isSongEndInvoke = false;
+        _isSettingUp = false;
     }
 
     public void PauseSong(Component sender, object data)
@@ -106,17 +118,18 @@ public class AudioManager : PersistentManager<AudioManager>
     public void Reset(Component sender, object data)
     {
         RemoveSong();
-        _songIndex = -1;
         _isSongEndInvoke = false;
     }
 
     private void Update()
     {
-        if (!musicChannel.isPlaying && !_isSongEndInvoke && musicChannel.clip != null && Application.isFocused &&
+        if (!musicChannel.isPlaying && !_isSongEndInvoke && !_isSettingUp && musicChannel.clip != null && Application.isFocused &&
             Time.timeScale != 0)
         {
+        Debug.Log(_isSongEndInvoke);
             onSongEnd.Invoke(this, null);
             _isSongEndInvoke = true;
+            _isSettingUp = true;
         }
     }
 }

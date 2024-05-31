@@ -25,6 +25,20 @@ public class UIMainMenu : BaseUI
         UIManager.Instance.ShowUI(UIIndex.UISetting);
     }
 
+    public void OnEditConcertClick() {
+        PlaySoundOnClick();
+        UIManager.Instance.HideUI(index);
+        UIManager.Instance.HideUI(UIIndex.UINavigationTab);
+        UIManager.Instance.ShowUI(UIIndex.UIConcertEditor);
+
+    }
+
+    public void OnEditLevelClick() {
+        PlaySoundOnClick();
+        UIManager.Instance.HideUI(index);
+        UIManager.Instance.HideUI(UIIndex.UINavigationTab);
+        UIManager.Instance.ShowUI(UIIndex.UILevelEditor);
+    }
 
     public void OnExitClick()
     {

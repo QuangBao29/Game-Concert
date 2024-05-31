@@ -36,9 +36,18 @@ public class UIVictory : BaseUI
         base.OnShow(param);
         if (param != null)
         {
-            rank.SetText(PlayFabGameDataController.Instance.PlayerRank.ToString());
 
             var temp = (EndLevelData)param.Data;
+            if (temp.IsCustom)
+            {
+                rank.SetText("Unranked");
+
+            }
+            else
+            {
+                rank.SetText(PlayFabGameDataController.Instance.PlayerRank.ToString());
+            }
+
             score.SetText(temp.Score.ToString());
             coinAmount.SetText(temp.Coin.ToString());
             gemAmount.SetText(temp.Gem.ToString());

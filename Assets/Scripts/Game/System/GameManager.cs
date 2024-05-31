@@ -10,13 +10,24 @@ public class GameManager : SingletonMono<GameManager>
     public GameEvent updateReward;
 
     private LevelData _levelData;
+    private UserLevelData _userLevelData;
+    private bool _isCustom = false;
     private GameState _gameState;
 
 
     public void Awake()
     {
         _gameState = GameState.UI;
-        _levelData = SceneManager.Instance.LevelData;
+        if (SceneManager.Instance.LevelData.SongIndex != -1)
+        {
+            _levelData = SceneManager.Instance.LevelData;
+            _isCustom = false;
+        }
+        else
+        {
+            _userLevelData = SceneManager.Instance.UserLevelData;
+            _isCustom = true;
+        }
     }
 
     private void Start()
@@ -26,7 +37,15 @@ public class GameManager : SingletonMono<GameManager>
 
     public void StartGame()
     {
-        SongManager.Instance.ReadFromFile(_levelData.SongName);
+        if (_isCustom)
+        {
+            SongManager.Instance.ReadFromUserFile(_userLevelData.MIDIPath);
+        }
+        else
+        {
+
+            SongManager.Instance.ReadFromFile(_levelData.SongName);
+        }
         _gameState = GameState.Play;
         onSongStart.Invoke(this, null);
     }
@@ -37,26 +56,41 @@ public class GameManager : SingletonMono<GameManager>
         {
             Coin = ScoreManager.Instance.coin,
             Gem = ScoreManager.Instance.gem,
-            Score = (int)ScoreManager.Instance.totalScore
+            Score = (int)ScoreManager.Instance.totalScore,
+            IsCustom = _isCustom
         });
     }
 
     public void ProcessEndSong(Component sender, object data)
     {
-        updateLeaderBoard.Invoke(this, new UpdateLeaderBoardReqInfo
+        if (!_isCustom)
         {
-            Name = _levelData.SongName,
-            Score = (int)ScoreManager.Instance.totalScore,
-            SuccessCallback = EndGame
-        });
 
-        updateReward.Invoke(this, new RewardData
-        {
-            CoinKey = "CN",
-            CoinAmount = ScoreManager.Instance.coin,
-            GemKey = "GM",
-            GemAmount = ScoreManager.Instance.gem
-        });
+            updateLeaderBoard.Invoke(this, new UpdateLeaderBoardReqInfo
+            {
+                Name = _levelData.SongName,
+                Score = (int)ScoreManager.Instance.totalScore,
+                SuccessCallback = EndGame
+            });
+
+            updateReward.Invoke(this, new RewardData
+            {
+                CoinKey = "CN",
+                CoinAmount = ScoreManager.Instance.coin,
+                GemKey = "GM",
+                GemAmount = ScoreManager.Instance.gem
+            });
+        }
+        else {
+            updateReward.Invoke(this, new RewardData
+            {
+                CoinKey = "CN",
+                CoinAmount = ScoreManager.Instance.coin,
+                GemKey = "GM",
+                GemAmount = ScoreManager.Instance.gem
+            });
+            EndGame();
+        }
     }
 
 

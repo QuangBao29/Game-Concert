@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -6755268134649495323}
   - component: {fileID: 9119698366246630713}
   - component: {fileID: 7275492232394682149}
+  - component: {fileID: -8259994962743611734}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -473,6 +474,34 @@ MonoBehaviour:
       - m_Target: {fileID: -1320711485269934990}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: StopSong
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-8259994962743611734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491925718759821063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 03da267ac6c8a4bb8b62b2545939e7ef, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1320711485269934990}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetCustomSong
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

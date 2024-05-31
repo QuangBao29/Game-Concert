@@ -6,6 +6,8 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using UnityEngine.Networking;
 using System;
+using Unity.VisualScripting;
+using Mono.Cecil;
 
 public class SongManager : SingletonMono<SongManager>
 {
@@ -41,6 +43,12 @@ public class SongManager : SingletonMono<SongManager>
     {
         get => _inputDelayInMilliseconds;
         set => _inputDelayInMilliseconds = value;
+    }
+
+    public void ReadFromUserFile(string midiPath)
+    {
+        Midifile = MidiFile.Read(midiPath);
+        GetDataFromMidi();
     }
 
     public void ReadFromFile(string songName)

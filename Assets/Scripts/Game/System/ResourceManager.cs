@@ -3,6 +3,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Networking;
+using System.Threading.Tasks;
 
 public class ResourceManager : PersistentManager<ResourceManager>
 {
@@ -35,7 +37,7 @@ public class ResourceManager : PersistentManager<ResourceManager>
         Addressables.ReleaseInstance(gameObject);
     }
 
-    
+
     public static void UnloadAudioClipAsset(AudioClip audioClip)
     {
         Addressables.Release(audioClip);
@@ -106,5 +108,48 @@ public class ResourceManager : PersistentManager<ResourceManager>
     public void UnloadScene()
     {
         Addressables.UnloadSceneAsync(SceneHandle);
+    }
+
+    public async Task<AudioClip> LoadLocalAudioClip(string filePath)
+    {
+        string uri = "file://" + filePath;
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(uri, GetAudioType(filePath)))
+        {
+            var operation = www.SendWebRequest();
+
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+            }
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                return DownloadHandlerAudioClip.GetContent(www);
+            }
+            else
+            {
+                Debug.LogError("Failed to load Audio Clip: " + www.error);
+                return null;
+            }
+        }
+    }
+
+
+    private AudioType GetAudioType(string filePath)
+    {
+        if (filePath.EndsWith(".wav", System.StringComparison.OrdinalIgnoreCase))
+        {
+            return AudioType.WAV;
+        }
+        else if (filePath.EndsWith(".mp3", System.StringComparison.OrdinalIgnoreCase))
+        {
+            return AudioType.MPEG;
+        }
+        else
+        {
+            Debug.LogError("Unsupported audio format: " + filePath);
+            return AudioType.UNKNOWN;
+        }
     }
 }
