@@ -34,6 +34,20 @@ public class UISongSelection : BaseUI
         _isCustom = false;
     }
 
+    protected override void OnHide()
+    {
+        base.OnHide();
+        foreach (Transform child in listSongContentDrawer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in listPlayerContentDrawer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     protected override void OnShow(UIParam param = null)
     {
         base.OnShow(param);
@@ -117,6 +131,7 @@ public class UISongSelection : BaseUI
                 songGameObject.GetComponent<Button>().onClick.AddListener(() => OnSongClick(songIndex, true));
             }
         }
+        ResourceManager.UnloadPrefabAsset(songPrefab);
     }
 
     private void LoadLeaderBoard()

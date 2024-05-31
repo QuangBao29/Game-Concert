@@ -126,7 +126,7 @@ public class AudioManager : PersistentManager<AudioManager>
         if (!musicChannel.isPlaying && !_isSongEndInvoke && !_isSettingUp && musicChannel.clip != null && Application.isFocused &&
             Time.timeScale != 0)
         {
-        Debug.Log(_isSongEndInvoke);
+            Debug.Log(_isSongEndInvoke);
             onSongEnd.Invoke(this, null);
             _isSongEndInvoke = true;
             _isSettingUp = true;
