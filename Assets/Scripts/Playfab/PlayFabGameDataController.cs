@@ -19,7 +19,7 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
         {
             CatalogVersion = catalogVersion
         };
-
+        _catalogItems.Clear();
         PlayFabClientAPI.GetCatalogItems(req, result =>
         {
             foreach (var item in result.Catalog)
@@ -91,7 +91,8 @@ public class PlayFabGameDataController : PersistentManager<PlayFabGameDataContro
                 }
             }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(req, _ => {
+        PlayFabClientAPI.UpdatePlayerStatistics(req, _ =>
+        {
             GetLeaderBoard(this, new LeaderBoardReqInfo
             {
                 Name = temp.Name,

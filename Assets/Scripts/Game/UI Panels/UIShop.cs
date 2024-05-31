@@ -59,10 +59,7 @@ public class UIShop : BaseUI
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(_isLoaded);
-    }
+
 
     private void LoadShop()
     {

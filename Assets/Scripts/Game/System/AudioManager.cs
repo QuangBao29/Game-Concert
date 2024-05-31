@@ -64,6 +64,7 @@ public class AudioManager : PersistentManager<AudioManager>
     {
         if (!musicChannel) return;
         musicChannel.Stop();
+        _isSongEndInvoke = true;
     }
 
     public void UnPauseSong(Component sender, object data)

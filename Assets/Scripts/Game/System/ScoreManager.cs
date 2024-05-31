@@ -108,9 +108,12 @@ public class ScoreManager : SingletonMono<ScoreManager>
                 break;
             case "Shield Combo":
                 _comboCount = _highestComboCount;
+                comboCountText.SetText(_comboCount.ToString() + "HIT");
                 break;
             case "Shield Multiplier":
                 _multiplier = _highestMultiplier;
+                _comboCount = _highestComboCount;
+                comboCountText.SetText(_comboCount.ToString() + "HIT");
                 break;
             case "Silver Ticket":
                 _rewardMultiplier = 1.75f;
