@@ -7,10 +7,12 @@ using System;
 using System.Collections;
 using UnityEngine.Networking;
 using GameData;
+using PlayFab.ClientModels;
 
 public class UILevelEditor : BaseUI
 {
     public TMP_InputField pathTxt;
+    public TextMeshProUGUI InfoText;
     private CustomLevelData _customLevelData;
 
     protected override void Awake()
@@ -23,6 +25,20 @@ public class UILevelEditor : BaseUI
     {
         base.OnShow(param);
         pathTxt.text = _customLevelData.FolderPath;
+        if (_customLevelData.FolderPath != "")
+        {
+            DisplayInfo();
+        }
+    }
+
+    private void DisplayInfo()
+    {
+        var info = "";
+        for (var i = 0; i < _customLevelData.ListSong.Count; i++)
+        {
+            info += $"song {i + 1}: {_customLevelData.ListSong[i].SongName} imported successfully! \n";
+        }
+        InfoText.SetText(info);
     }
 
     private void ResetCustomLevelData()
@@ -36,6 +52,7 @@ public class UILevelEditor : BaseUI
 
     public void OnSetPathClick()
     {
+        PlaySoundOnClick();
         ResetCustomLevelData();
         if (Directory.Exists(pathTxt.text))
         {
@@ -64,6 +81,7 @@ public class UILevelEditor : BaseUI
                 });
             }
         }
+        DisplayInfo();
     }
 
 
