@@ -110,7 +110,8 @@ namespace EventData
     {
         public string SongPath;
         public string MIDIPath;
-        public string AnimPath;
+        public string BundlePath;
+        public string AnimClip;
     }
 
 

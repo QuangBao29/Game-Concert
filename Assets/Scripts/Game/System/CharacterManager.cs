@@ -13,7 +13,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     private Animator _animator;
     private AnimationClip _dance;
-    private RuntimeAnimatorController _characterAnimator;
+    private RuntimeAnimatorController _characterAnimatorController;
 
     private string _currentCharacterPath;
     private readonly Vector3 _characterPosition = new(0.15f, 2.5f, 0f);
@@ -29,7 +29,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
         await handleCharacterAnimator.Task;
         if (handleCharacterAnimator.Status == AsyncOperationStatus.Succeeded)
         {
-            _characterAnimator = handleCharacterAnimator.Result;
+            _characterAnimatorController = handleCharacterAnimator.Result;
         }
 
         Application.quitting += () => { Addressables.Release(handleCharacterAnimator); };
@@ -42,7 +42,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     public void Dance(Component sender, object data)
     {
-        _animator.Play("Base Layer." + _dance.name);
+        _animator.Play(_dance.name);
     }
 
     public void LoadCharacter(Component sender, object data)
@@ -62,7 +62,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
             _character.transform.position = _characterPosition;
 
             _animator = _character.GetComponent<Animator>();
-            _animator.runtimeAnimatorController = _characterAnimator;
+            _animator.runtimeAnimatorController = _characterAnimatorController;
         }
     }
 
@@ -79,7 +79,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
         _character.transform.position = _characterPosition;
 
         _animator = _character.GetComponent<Animator>();
-        _animator.runtimeAnimatorController = _characterAnimator;
+        _animator.runtimeAnimatorController = _characterAnimatorController;
     }
 
     public void SetAnimation(Component sender, object data)
@@ -88,11 +88,21 @@ public class CharacterManager : PersistentManager<CharacterManager>
         _dance = ResourceManager.LoadAnimationClip(AnimationPath + temp.SongName + ".anim");
     }
 
+    public async void SetCustomAnimation(Component sender, object data)
+    {
+        var temp = (UserLevelData)data;
+        _dance = await ResourceManager.Instance.LoadLocalAnimationClip(temp.BundlePath, temp.AnimClip);
+        var overrideController = new AnimatorOverrideController(_characterAnimatorController);
+        overrideController["Idle 1"] = _dance;
+        _dance.name = "Idle 1";
+        _animator.runtimeAnimatorController = overrideController;
+    }
 
     public void Reset(Component sender, object data)
     {
         _character.transform.position = _characterPosition;
         _character.transform.eulerAngles = _characterRotation;
         _animator.Play("Idle");
+        _animator.runtimeAnimatorController = _characterAnimatorController;
     }
 }

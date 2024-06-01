@@ -67,7 +67,8 @@ public class UISongSelection : BaseUI
                 {
                     SongPath = _customLevelData.ListSong[_songIndex].SongPath,
                     MIDIPath = _customLevelData.ListSong[_songIndex].MIDIPath,
-                    AnimPath = _customLevelData.ListSong[_songIndex].AnimationPath,
+                    BundlePath = _customLevelData.BundlePath,
+                    AnimClip = _customLevelData.ListSong[_songIndex].AnimationPath,
                 });
             }
             else

@@ -152,4 +152,30 @@ public class ResourceManager : PersistentManager<ResourceManager>
             return AudioType.UNKNOWN;
         }
     }
+
+    public async Task<AnimationClip> LoadLocalAnimationClip(string filePath, string clipName)
+    {
+        string uri = "file://" + filePath + "/anim";
+        using (UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(uri))
+        {
+            var operation = www.SendWebRequest();
+
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+            }
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
+                AnimationClip clip = bundle.LoadAsset<AnimationClip>(clipName);
+                bundle.Unload(false);
+                return clip;
+            }
+            else
+            {
+                Debug.LogError("Failed to load Animation Clip: " + www.error);
+                return null;
+            }
+        }
+    }
 }

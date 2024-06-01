@@ -7,6 +7,6 @@ public class CustomLevelData : ScriptableObject
     public string FolderPath;
     public string SongPath;
     public string MIDIPath;
-    public string AnimPath;
+    public string BundlePath;
     public List<CustomSongData> ListSong;
 }

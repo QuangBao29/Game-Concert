@@ -28,7 +28,7 @@ public class UILevelEditor : BaseUI
     private void ResetCustomLevelData()
     {
         _customLevelData.FolderPath = "";
-        _customLevelData.AnimPath = "";
+        _customLevelData.BundlePath = "";
         _customLevelData.MIDIPath = "";
         _customLevelData.SongPath = "";
         _customLevelData.ListSong.Clear();
@@ -40,7 +40,7 @@ public class UILevelEditor : BaseUI
         if (Directory.Exists(pathTxt.text))
         {
             _customLevelData.FolderPath = pathTxt.text;
-            _customLevelData.AnimPath = pathTxt.text + "/Anim";
+            _customLevelData.BundlePath = pathTxt.text + "/Anim";
             _customLevelData.MIDIPath = pathTxt.text + "/MIDI";
             _customLevelData.SongPath = pathTxt.text + "/Music";
 
@@ -48,7 +48,7 @@ public class UILevelEditor : BaseUI
             var songDir = dir.GetFiles("*.wav").Concat(dir.GetFiles("*.mp3")).ToList();
             var count = songDir.Count();
 
-            dir = new DirectoryInfo(_customLevelData.AnimPath);
+            dir = new DirectoryInfo(_customLevelData.BundlePath);
             var animDir = dir.GetFiles("*.anim").ToList();
 
             dir = new DirectoryInfo(_customLevelData.MIDIPath);
@@ -60,7 +60,7 @@ public class UILevelEditor : BaseUI
                     SongName = songDir[i].Name,
                     SongPath = songDir[i].ToString(),
                     MIDIPath = MIDIDir[i].ToString(),
-                    AnimationPath = animDir[i].ToString(),
+                    AnimationPath = animDir[i].Name,
                 });
             }
         }
