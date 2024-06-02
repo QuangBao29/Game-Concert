@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using EventData;
 using UnityEngine;
@@ -10,7 +9,9 @@ public class CharacterManager : PersistentManager<CharacterManager>
 {
     private GameObject _characterPrefab;
     private GameObject _character;
-
+    private List<GameObject> _listNPCs;
+    private List<GameObject> _listNPCsPrefab;
+    public List<Vector3> ListPosition;
     private Animator _animator;
     private AnimationClip _dance;
     private RuntimeAnimatorController _characterAnimatorController;
@@ -32,6 +33,9 @@ public class CharacterManager : PersistentManager<CharacterManager>
             _characterAnimatorController = handleCharacterAnimator.Result;
         }
 
+        _listNPCs = new List<GameObject>();
+        _listNPCsPrefab = new List<GameObject>();
+
         Application.quitting += () => { Addressables.Release(handleCharacterAnimator); };
     }
 
@@ -42,6 +46,10 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     public void Dance(Component sender, object data)
     {
+        foreach (var character in _listNPCs)
+        {
+            character.GetComponent<Animator>().Play(_dance.name);
+        }
         _animator.Play(_dance.name);
     }
 
@@ -96,10 +104,50 @@ public class CharacterManager : PersistentManager<CharacterManager>
         overrideController["Idle 1"] = _dance;
         _dance.name = "Idle 1";
         _animator.runtimeAnimatorController = overrideController;
+        foreach (var character in _listNPCs)
+        {
+            character.GetComponent<Animator>().runtimeAnimatorController = overrideController;
+        }
+    }
+
+    public void UnloadNPC(Component sender, object data)
+    {
+        foreach (var npc in _listNPCsPrefab)
+        {
+            ResourceManager.UnloadPrefabAsset(npc);
+        }
+        foreach (var npc in _listNPCs)
+        {
+            Destroy(npc);
+        }
+    }
+
+    public void LoadNPC(Component sender, object data)
+    {
+        var tmp = Resources.Load<SettingData>("Scriptable Objects/Setting Data");
+        var listNPC = tmp.NPC;
+        for (var i = 0; i < listNPC.Count; i++)
+        {
+            var npcPrefab = ResourceManager.LoadPrefabAsset(listNPC[i]);
+            _listNPCsPrefab.Add(npcPrefab);
+
+            var NPC = Instantiate(npcPrefab);
+            NPC.transform.position = ListPosition[i];
+
+            var animator = NPC.GetComponent<Animator>();
+            animator.runtimeAnimatorController = _characterAnimatorController;
+            _listNPCs.Add(NPC);
+        }
     }
 
     public void Reset(Component sender, object data)
     {
+        for (var i = 0; i < _listNPCs.Count; i++)
+        {
+            _listNPCs[i].transform.position = ListPosition[i];
+            _listNPCs[i].transform.eulerAngles = _characterRotation;
+            _listNPCs[i].GetComponent<Animator>().Play("Idle");
+        }
         _character.transform.position = _characterPosition;
         _character.transform.eulerAngles = _characterRotation;
         _animator.Play("Idle");

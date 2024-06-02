@@ -22,3 +22,8 @@ MonoBehaviour:
   - 1.0
   - 1.0
   - English
+  NPC:
+  - Models/SMPL/SMPL
+  - Models/SMPL/SMPL
+  - Models/SMPL/SMPL
+  - Models/SMPL/SMPL

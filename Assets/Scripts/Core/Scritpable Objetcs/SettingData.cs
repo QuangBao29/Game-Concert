@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,4 +7,5 @@ public class SettingData : ScriptableObject
 {
     public List<string> ListSetting;
     public List<string> ListData;
+    public List<string> NPC;
 }

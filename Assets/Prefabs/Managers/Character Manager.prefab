@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6066376660327725989}
   - component: {fileID: 6735550074058553194}
   - component: {fileID: -5140090397723571959}
+  - component: {fileID: 206611136973287011}
   m_Layer: 0
   m_Name: Character Manager
   m_TagString: Untagged
@@ -52,6 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d694fbb34ea284fb28a9f740f3e76a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListPosition:
+  - {x: 0.85, y: 2.5, z: -0.5}
+  - {x: -0.55, y: 2.5, z: -0.5}
+  - {x: 1.5, y: 2.5, z: -1}
+  - {x: -1.2, y: 2.5, z: -1}
   animatorRef:
     m_AssetGUID: 0aaf7c86bab1d4df7b8cec0d5c93f51a
     m_SubObjectName: 
@@ -141,6 +147,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7232212210676078456}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: LoadNPC
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6834209324649024498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +206,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7232212210676078456}
         m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
         m_MethodName: Reset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7232212210676078456}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: UnloadNPC
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -272,6 +302,46 @@ MonoBehaviour:
       - m_Target: {fileID: 7232212210676078456}
         m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
         m_MethodName: SetCustomAnimation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7232212210676078456}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: LoadNPC
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &206611136973287011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232212210676078458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2015ecbe932d044fc979fcc092bec833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: efeadf42940c84e45adcddaf8b2f86ec, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7232212210676078456}
+        m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
+        m_MethodName: UnloadNPC
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
