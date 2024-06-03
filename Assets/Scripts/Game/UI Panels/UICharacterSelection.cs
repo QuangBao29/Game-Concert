@@ -43,13 +43,20 @@ public class UICharacterSelection : BaseUI
             _characterButtonPrefab = ResourceManager.LoadPrefabAsset("Assets/Prefabs/UI/Character Button.prefab");
         }
 
-        if (!_characterAvatar)
-        {
-            _characterAvatar = ResourceManager.LoadSprite("Assets/Art/Sprite/Icon/Avatar Default.png");
-        }
-
         foreach (var character in _characterData.ListCharacter)
         {
+            if (character.Path == "Men/")
+            {
+                _characterAvatar = ResourceManager.LoadSprite("Assets/Art/Sprite/Icon/" + character.ModelName + "1.png");
+            }
+            else if (character.Path == "Women/")
+            {
+                _characterAvatar = ResourceManager.LoadSprite("Assets/Art/Sprite/Icon/" + character.ModelName + "0.png");
+            }
+            else
+            {
+                _characterAvatar = ResourceManager.LoadSprite("Assets/Art/Sprite/Icon/Avatar Default.png");
+            }
             var characterButton = Instantiate(_characterButtonPrefab, contentDrawer.transform, false);
             characterButton.GetComponent<Image>().sprite = _characterAvatar;
             characterButton.GetComponent<Button>().onClick.AddListener(() =>

@@ -101,6 +101,90 @@ MonoBehaviour:
     m_Address: Assets/Art/Sprite/Song Cover/1.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e0d3bd3b74b104945b73724c7759de9a
+    m_Address: Assets/Art/Sprite/Icon/Formal0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 267774d52a6a039438d9e3fd2e79b1cb
+    m_Address: Assets/Art/Sprite/Icon/SciFi0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 849cdc7a6205f8e44a6d728654944e2f
+    m_Address: Assets/Art/Sprite/Icon/Adventurer1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54469a68b38400e498ee20ac2ea12aec
+    m_Address: Assets/Art/Sprite/Icon/Punk1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b2c1ca3981891944b38c0c401fa658e
+    m_Address: Assets/Art/Sprite/Icon/Beach1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 814214d5eb02b374f931c3f36f948c1c
+    m_Address: Assets/Art/Sprite/Icon/Suit1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31946d855d89c9e4c8ddd36cd3d5462f
+    m_Address: Assets/Art/Sprite/Icon/Punk0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d7547ed14f4004f4399831d5f3ace64e
+    m_Address: Assets/Art/Sprite/Icon/Suit0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed43d5e29e3e9bf408f1743fe30158e2
+    m_Address: Assets/Art/Sprite/Icon/Casual21.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d1763afb8a4632644a3cae6731a64f9c
+    m_Address: Assets/Art/Sprite/Icon/Medieval0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2fedd0078b1ea7946bc2120534434038
+    m_Address: Assets/Art/Sprite/Icon/Swat1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d77b8aab096ef84593e6589f04fc163
+    m_Address: Assets/Art/Sprite/Icon/Spacesuit1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 333216b33ca01f140af6c1679ce4a606
+    m_Address: Assets/Art/Sprite/Icon/Worker1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 32a64c02212630b44aef1cd50a5cd863
+    m_Address: Assets/Art/Sprite/Icon/Casual0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03d47343dd448d142b401b03b8cf064e
+    m_Address: Assets/Art/Sprite/Icon/Soldier0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f108a12853905a44cb62bae760838218
+    m_Address: Assets/Art/Sprite/Icon/Farmer1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 260f47a499b24f2499b631620ce5bb41
+    m_Address: Assets/Art/Sprite/Icon/Casual1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f5a9b126e819be4a8527f87c9b0aaf2
+    m_Address: Assets/Art/Sprite/Icon/Worker0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7567a31ff94c454f8330f503b2903f2
+    m_Address: Assets/Art/Sprite/Icon/Adventurer0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 077fbc0b9b2875d498446c2dd30aa92c
+    m_Address: Assets/Art/Sprite/Icon/Witch0.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1e1c25c339a970d4191e17a028bbcaf7
+    m_Address: Assets/Art/Sprite/Icon/King1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33f0c0a813db642d5856e2e5d17f969f, type: 2}
   m_SchemaSet:
