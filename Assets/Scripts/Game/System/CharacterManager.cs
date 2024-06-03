@@ -49,6 +49,7 @@ public class CharacterManager : PersistentManager<CharacterManager>
         foreach (var character in _listNPCs)
         {
             character.GetComponent<Animator>().Play(_dance.name);
+            Debug.Log(character.name);
         }
         _animator.Play(_dance.name);
     }
@@ -124,6 +125,8 @@ public class CharacterManager : PersistentManager<CharacterManager>
 
     public void LoadNPC(Component sender, object data)
     {
+        _listNPCs.Clear();
+        _listNPCsPrefab.Clear();
         var tmp = Resources.Load<SettingData>("Scriptable Objects/Setting Data");
         var listNPC = tmp.NPC;
         for (var i = 0; i < listNPC.Count; i++)
